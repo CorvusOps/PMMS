@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/output.css">
+    <title>PMMS Admin</title>
+</head>
+<body class="bg-[#FFF0B9] font-Poppins">
+    <div class="flex">
+        <!--full page div-->
+        <div class="fixed h-screen w-72 bg-white px-2 py-8">
+            <!--sidebar div-->
+            <div id="userDisp" class="flex gap-4 items-center ml-6 mb-8 px-4">
+                <iconify-icon inline icon="fa-solid:user" style="color: #ffc46b;" width="40"></iconify-icon>
+                <!--in other user interfaces, this should be modifiable-->
+                <h2 id="user-info" class="text-2xl text-orange-200 font-semibold">Admin</h2>
+            </div>
+
+            <hr class="border border-gray-200 m-4">
+            
+            <ul class="mx-6">
+                <a href="adminDashboard.html">
+                    <li class="flex items-center gap-4 bg-orange-200 px-6 py-2 rounded-xl mt-8 mb-4 text-white">
+                        <span class="iconify-inline" data-icon="bxs:dashboard" style="color: #ffffff;" data-width="30"></span>
+                        <span class="">
+                            Dashboard
+                        </span>
+                    </li>
+                </a>
+                <a href="adminAccounts.html">
+                    <li class="flex items-center gap-6 hover:bg-orange-200 px-6 py-2 rounded-xl mb-4 text-orange-200 hover:text-white">
+                        <span class="iconify-inline" data-icon="fa-solid:user" style="color: #ffc46b;" data-width="25"></span>
+                        <span class="">
+                            Accounts
+                        </span>
+                    </li>
+                </a>
+                <a href="adminBarangays.html">
+                    <li class="flex items-center gap-4 hover:bg-orange-200 px-4 py-2 rounded-xl mb-4 text-orange-200 hover:text-white">
+                        <span class="iconify-inline" data-icon="ci:location" style="color: #ffc46b;" data-width="35"></span>
+                        <span class="">
+                            Barangays
+                        </span>
+                    </li>
+                </a>
+            </ul>
+            <hr class="border border-gray-200 my-8 mx-4">
+            <ul class="mx-6">
+                <a href="#">
+                    <li class="flex items-center gap-4 hover:bg-orange-200 px-6 py-2 rounded-xl mb-4 text-orange-200 hover:text-white">
+                        <span class="iconify-inline" data-icon="cil:account-logout" style="color: #ffc46b;" data-width="25"></span>
+                        <span class="">
+                            Logout
+                        </span>
+                    </li>
+                </a>
+            </ul>
+            <!--end of sidebar-->
+        </div>
+        
+        <div class="h-full ml-72 px-12 py-6 w-full">
+            <!--content/right side div-->
+            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">System Dashboard</h1>
+            <div class="w-full flex gap-10 mt-5">
+                <!--information-->
+                <div class="w-1/2 flex items-center gap-4 bg-white py-5 rounded-xl  shadow-md">
+                    <!--count of account container-->
+                    <div class="ml-4">
+                        <div class="bg-blue-400 py-2 px-3 rounded-md">
+                            <span class="iconify-inline" data-icon="fa-solid:user" style="color: #ffff;" data-width="25"></span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 text-orange-200 pr-32">
+                        Accounts
+                        <span id="userCount" class="text-2xl font-bold text-black">
+                            <!--must change depending on the number of users in the database-->
+                            50
+                        </span>
+                    </div>
+                    
+                </div>
+                <div class="w-1/2 flex items-center gap-4 bg-white py-5 rounded-xl shadow-md">
+                    <!--count of barangay number container-->
+                    <div class="ml-4">
+                        <div class="bg-blue-600 py-2 px-3 rounded-md">
+                            <span class="iconify-inline" data-icon="mdi:home-city-outline" style="color: rgb(255, 255, 255);" data-width="30"></span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 text-orange-200 pr-32">
+                        Barangays
+                        <span id="brgyCount" class="text-2xl font-bold text-black">
+                            <!--must change depending on the number of barangay in the database-->
+                            8
+                        </span>
+                    </div>
+                </div>
+                <!--end of information container-->
+            </div>
+            <!--end of right side content-->
+        </div>
+        <!--end of full page div-->
+    </div>
+    <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+</body>
+</html>
