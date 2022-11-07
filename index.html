@@ -9,16 +9,21 @@
 </head>
 <body class="bg-[url('../images/city-background.jpeg')] bg-fixed bg-cover backdrop-blur-sm">
     <!--Full page div-->
-    <div class="h-full backdrop-blur-sm bg-gray-100/5 flex items-center">
-        <div class="md:flex mt-8 md:mr-8 md:ml-8 mb-0 p-7 gap-8 pb-24">
-            <div class="w-1/2 flex items-center md:ml-12">
-                <img src="images/Text.png" alt="System Name">
+    <div class="h-screen backdrop-blur-sm bg-gray-100/5 flex">
+        <div class="md:flex md:mt-8 mt-2 md:mr-8 md:ml-8 md:mb-0 p-7 gap-8 pb-24">
+            <div class="md:w-1/2 flex items-center md:ml-12">
+                <!--system title image hides on bigger screen and system text title shows on mobile view-->
+                <img src="images/Text.png" alt="System Name" class="hidden md:block">
+                <h1 class="font-Poppins font-semibold text-center text-2xl text-orange-200 drop-shadow-[0_1px_2px_rgba(0,0,0,1)]
+                            w-full md:hidden block mb-5 px-5">
+                            City Poverty and Malnutrition Monitoring System
+                </h1>
             </div>        
             <div class="md:ml-32 mx-5">
                 <!--login form-->
                 <form action="#" method="post" class="bg-white h-full w-96 p-8 font-Poppins rounded-lg shadow-md shadow-gray-600">
 
-                    <h1 class="text-center text-3xl font-bold text-orange-100 mb-8">Login</h1>
+                    <h1 class="text-center text-3xl font-bold text-orange-200 mb-8">Login</h1>
 
                     <label for="username">Username</label>
                     <div class="relative flex items-center">
@@ -37,22 +42,26 @@
                     <div class="my-5 grid place-items-center"> 
                         <!--div for login button-->
                         <input type="submit" value="Login" name="login"
-                            class="uppercase border-gray-600 px-6 p-1 w-2/3 rounded-2xl bg-orange-200 text-white shadow-sm hover:bg-yellow-800 hover:shadow-lg">
+                            class="uppercase border-gray-600 px-6 p-1 w-2/3 rounded-2xl bg-orange-300 text-white shadow-sm hover:bg-yellow-800 hover:shadow-lg">
                     </div>
 
                     <hr class="mt-8 border border-gray-300">
                     <div class="py-4">
                         <!--Forgot password or technical assistance text-->
-                        <p class="text-yellow-600">Forgot password?</p>
-                        <p class="text-[#757575] text-sm">Request technical assistance from the system administrator or contact your city office.</p>
-                        <p class="text-[#757575] text-sm">Send an email to: <strong>support@pmmsys.com</strong></p> 
+                        <p class="text-yellow-600">
+                            Forgot password?
+                        </p>
+                        <p class="text-[#757575] text-sm">
+                            Request technical assistance from the system administrator or contact your city office.
+                        </p>
+                        <p class="text-[#757575] text-sm">
+                            Send an email to: <strong>support@pmmsys.com</strong>
+                        </p> 
                     </div>
                    <!--End of login form-->
                 </form>
             </div>
-
         </div>
-
     </div>
     <!--End of full page-->
 
