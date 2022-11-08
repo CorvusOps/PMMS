@@ -1,2 +1,8 @@
 # Node modules folder
 node_modules/
+
+#ignores connectdb so any changes in your local repo will not reflect when commitings
+src/includes/connectdb.php
+
+#ignores output.css because it will be updated when running the tailwinds
+public/output.css
