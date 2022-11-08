@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/output.css">
-    <title>City Dashboard</title>
+    <title>City Barangays</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
     <div class="flex">
@@ -22,8 +22,8 @@
 
             <ul class="mx-6">
                 <a href="cityDashboard.html">
-                    <li class="menu flex items-center gap-4 bg-orange-200 px-6 py-2 rounded-xl mt-5 mb-2 text-white">
-                        <span class="iconify-inline" data-icon="bxs:dashboard" style="color: #ffffff;" data-width="30"></span>
+                    <li class="menu flex items-center gap-4 hover:bg-orange-200 px-6 py-2 rounded-xl mt-5 mb-2 text-orange-200 hover:text-white">
+                        <span class="iconify-inline" data-icon="bxs:dashboard" style="color: #ffc46b;" data-width="30"></span>
                         <span class="">
                             Dashboard
                         </span>
@@ -38,13 +38,14 @@
                     </li>
                 </a>
                 <a href="cityBarangays.html">
-                    <li class="menu flex items-center gap-4 hover:bg-orange-200 px-4 py-2 rounded-xl mb-2 text-orange-200 hover:text-white">
+                    <li class="menu flex items-center gap-4 bg-orange-200 px-4 py-2 rounded-xl mb-2 text-white">
                         <span class="iconify-inline" data-icon="ci:location" style="color: #ffc46b;" data-width="35"></span>
                         <span class="">
                             Barangays
                         </span>
                     </li>
                 </a>
+                <a href="#">
                     <li class="menu flex items-center hover:bg-orange-200 rounded-xl text-orange-200 hover:text-white">
                         <a href="cityRecords.html" class="flex items-center gap-5 pl-2 py-2 ">
                             <span class="iconify-inline ml-2 flex-none" data-icon="bxs:folder" style="color: #ffc46b;" data-width="28"></span>
@@ -56,7 +57,7 @@
                             <iconify-icon icon="ep:arrow-down" style="color: #ffc46b;" width="20"></iconify-icon>
                         </button>
                     </li>
-               
+                </a>
                 <ul id="sub-menu" class="text-sm hidden items-center gap-3 ml-14 mt-2 ">
                     <div class="h-36 w-[1px] bg-gray-200"></div>
                     <div>
@@ -91,39 +92,56 @@
         
         <div class="h-full ml-72 px-12 py-6 w-full">
             <!--content/right side div-->
-            <h1 id="cityName" class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">
-                 <!--must change depending on the name of the city in the database-->
-                City of San Carlos
-            </h1>
-            <div class="w-full flex gap-10 mt-5">
-                <!--information-->
-                <div class="w-full flex items-center gap-4 bg-white py-8 px-4 rounded-xl shadow-md">
-                    <!--total deprivation container-->
-                    <div class="ml-4">
-                        <div class="bg-blue-400 py-2 px-2 rounded-md">
-                            <span class="iconify-inline" data-icon="ci:bar-chart" style="color: #ffff;" data-width="40"></span>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 text-[#FFBE5B] pr-32 font-semibold tracking-wider">
-                        Total Deprivation
-                        <span class="text-orange-300 text-2xl">
-                            Year 
-                            <!--must change depending on the system year-->
-                            <span id="yearNow">2022</span>
-                        </span>
-                    </div>
-
-                    <div class="flex justify-end items-center w-1/2">
-                        <span class="text-4xl font-bold text-black">
-                            <span id="cityTotalDep">
-                                <!--must change depending on the totalDep of City-->
-                                22.56
-                            </span>
-                             %
-                        </span>
-                    </div>
-                </div>
-                <!--end of information container-->
+            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Barangays</h1>
+            <div class="w-full flex justify-end">
+                <button class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                    <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
+                    Add Barangay
+                </button>
+            </div>
+            
+            <div class="w-full mt-4">
+                <!--table for users-->
+                <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
+                    <thead>
+                        <!--for the sake of showing, this is a temporary format-->
+                        <!--the padding should be adjusted in actual code-->
+                        <tr class="shadow-sm shadow-gray-500">
+                            <th class="py-2 pl-20 pr-5 text-left font-extralight">id</th>
+                            <th class="py-2 pl-20 pr-5 text-left font-extralight">Barangay Name</th>
+                            <th class="py-2 px-5 text-left font-extralight">Barangay Captain</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--when backend is integrated there should be multiple table data thru php-->
+                        <tr class="border-b-2 border-orange-300">
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                        </tr>
+                        <tr class="border-b-2 border-orange-300">
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                        </tr>
+                        <tr class="border-b-2 border-orange-300">
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                        </tr>
+                        <tr class="border-b-2 border-orange-300">
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                        </tr>
+                        <tr class="border-b-2 border-orange-300">
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                            <td class="py-5 px-5"></td>
+                        </tr>                        
+                    </tbody>
+                </table>
+                <!--end of table-->
             </div>
             <!--end of right side content-->
         </div>
