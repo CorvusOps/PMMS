@@ -6,3 +6,7 @@ src/includes/connectdb.php
 
 #ignores output.css because it will be updated when running the tailwinds
 public/output.css
+
+#ignore local change due to tailwind compatibility update
+package-lock.json  
+package.json
