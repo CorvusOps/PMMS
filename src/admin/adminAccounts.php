@@ -12,16 +12,18 @@
     <div class="flex">
         <!--full page div-->
 
-        <?php include '../includes/adminSidebar.php' ?>
-            
-        <div class="h-full ml-72 px-12 py-6 w-full">
+    <?php include '../includes/adminSidebar.php'; ?>
+
+       <div class="h-full ml-72 px-12 py-6 w-full">
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Accounts</h1>
             <div class="w-full flex justify-end">
-                <button class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                <!--Temporarily Changed into anchor so I can test the adding of user-->
+                <a href="modalAddAccountTemplate.php" 
+                    class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
                     Add User
-                </button>
+                </a>
             </div>
             
             <div class="w-full mt-4">
@@ -135,5 +137,7 @@
     </div>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
 </body>
 </html>
