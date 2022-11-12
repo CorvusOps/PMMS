@@ -76,7 +76,7 @@
     </ul>
     <hr class="border border-gray-200 my-5 mx-4">
     <ul class="mx-6">
-        <a href="#">
+        <a href="../includes/logout.php">
             <li class="menu flex items-center gap-4 hover:bg-orange-200 px-6 py-2 rounded-xl mb-2 text-orange-200 hover:text-white">
                 <span class="iconify-inline" data-icon="cil:account-logout" style="color: #ffc46b;" data-width="25"></span>
                 <span class="">
