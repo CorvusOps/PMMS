@@ -1,0 +1,24 @@
+{
+  "name": "pmms",
+  "version": "1.0.0",
+  "description": "Repository for COMP 20183: Software Engineering 2's Final Requirement: Poverty and Malnutrition Monitoring System of Local City Government",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o public/output.css",
+    "watch": "tailwindcss -i src/input.css -o public/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CorvusOps/PMMS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CorvusOps/PMMS/issues"
+  },
+  "homepage": "https://github.com/CorvusOps/PMMS#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.2"
+  }
+}
