@@ -1,3 +1,20 @@
+<?php
+include '../includes/connectdb.php';
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if($_SESSION["cm_sid"] == session_id()){
+    if(!isset($_SESSION["cm_sid"]) || $_SESSION["cm_sid"] !== session_id()){
+        header("location: ../includes/error.php");
+        exit;
+    }
+}elseif($_SESSION["ms_sid"] == session_id()){
+    if(!isset($_SESSION["ms_sid"]) || $_SESSION["ms_sid"] !== session_id()){
+        header("location: ../includes/error.php");
+        exit;
+    }
+}else		
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
