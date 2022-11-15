@@ -1,3 +1,31 @@
+<?php 
+session_start();
+// Not sure if ill include this since this will redirect the user to their respective dashboard
+if(isset($_SESSION['admin_sid']) || isset($_SESSION['cm_sid']) ||
+   isset($_SESSION['ms_sid'])    || isset($_SESSION['bc_sid'])){
+    // if the session is already stablished
+    // any attemp of going here will be redirected in their respective dashboard
+    /**TRY THIS LATER
+     * switch(session_id()){
+     *  case $_SESSION['admin_sid']:
+     *       header("location:webadmin/adminpanel.php");
+     *  case "cm_sid":
+     *  case 'ms_sid':
+     * }
+     */
+    if(isset($_SESSION['admin_sid'])){
+        header("location:src/admin/adminDashboard.php");
+    }elseif(isset($_SESSION['cm_sid'])){
+        header("location:src/city/cityDashboard.php");
+    }elseif(isset($_SESSION['ms_sid'])){
+        header("location:src/city/cityDashboard.php");
+    }elseif(isset($_SESSION['bc_sid'])){
+        header("location:src/barangay/barangayDashboard.php");
+    }else{
+        header("location:index.php");
+    }
+}else{  
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,3 +97,4 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>
 </html>
+<?php }?>
