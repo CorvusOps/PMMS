@@ -12,9 +12,16 @@ Repository for COMP 20183: Software Engineering 2's Final Requirement: Poverty a
 2. **[PHP](#php)** <br>
 3. **[Code editors](#codeEditors)** <br>
 3.1. **[Visual Code](#visual-code)** <br>
+4. ** [TailwindCSS](#TailwindCSS)** <br>
+5. **[Database](#Database)** <br>
+5.1. **[MySQLWorkbench](#MySQLWorkbench)** <br>
+5.2. **[PHPMyAdmin](#PHPMyAdmin) ** via XAMPP <br>
 
 
 ### Xampp
+XAMPP is a free, open source application that allows you to create a local web server on your computer. This is useful for developers who wants to testing their app on local server before deploying them to a live server. Software includes Apache web server, MySQL database, Perl, PHP. It is available for Windows, macOS, Linux. It provides a centralized location for installation, configuration, management of a web server.
+
+#### Procedure in installing
 1. In the web browser, visit Apache Friends and download XAMPP installer. 
 2. During the installation process, select the required components like MySQL, FileZilla ftp server, PHP, phpMyAdmin or leave the default options and click the Next button. 
 3. Choose the root directory path to set up the htdocs folder for our applications. For example ‘C:\xampp’.
@@ -28,6 +35,9 @@ Repository for COMP 20183: Software Engineering 2's Final Requirement: Poverty a
 - To Check if PHP is Working: All the website related files are organized in a folder called htdocs and then run index.php file by using http://localhost/index.php or http://localhost.
 
 ### PHP
+PHP is an HTML-embedded scripting language. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
+
+#### Procedure in installing
 1. The first thing you have to do is to download the PHP package file of your choice from the official PHP downloads page.
 2. You’ll find .zip files available for both x86 and x64 systems, so make sure to download the correct one as per your Windows OS architecture. Also, you’ll have to choose either to download the non-thread-safe or thread-safe version of PHP. If you’re planning to run PHP as an Apache module, the thread-safe version is recommended. However, if you want to run PHP as a CGI module, you can choose either of them!
 3. Next, you need to extract the .zip file in the directory where you want to install PHP. A common install location is C:\php. Create the php directory and extract the .zip file contents inside the C:\php directory.
@@ -38,8 +48,12 @@ Repository for COMP 20183: Software Engineering 2's Final Requirement: Poverty a
 Finally, reboot the system, and you’re done. You’ve successfully installed PHP in your Windows installation!
 
 ### CodeEditors
+Code editors or source code editors are software that is designed specifically to help developers with coding. These are text editors with additional functionalities to manage and edit code.
 
 #### Visual Code
+Visual Studio Code, also commonly referred to as VS Code, is a source-code editor made by Microsoft with the Electron Framework, for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. Users can change the theme, keyboard shortcuts, preferences, and install extensions that add additional functionality.
+
+#### Procedure in installing
 1.  Visit the official website of the Visual Studio Code using any web browser like Google Chrome, Microsoft Edge, etc.
 2. Press the “Download for Windows” button on the website to start the download of the Visual Studio Code Application.
 3. When the download finishes, then the Visual Studio Code icon appears in the downloads folder.
@@ -51,4 +65,15 @@ Finally, reboot the system, and you’re done. You’ve successfully installed P
 9. After the Installation setup for Visual Studio Code is finished, it will show a window like this below. Tick the “Launch Visual Studio Code” checkbox and then click Next.
 10. After the previous step, the Visual Studio Code window opens successfully. Now you can create a new file in the Visual Studio Code window and choose a language of yours to begin your programming journey!
 
+### TailwindCSS
+Tailwind CSS is self-described as a utility first CSS framework. Rather than focusing on the functionality of the item being styled, Tailwind is centered around how it should be displayed. This makes it easier for the developer to test out new styles and change the layout. 
+
+#### Procedure in installing
+1. First, install node.js in https://nodejs.org/en/download/ then run 'npm install -g npm'.
+1. Visit the official website of the tailwind css using any web browser, then follow their instruction in installation in https://tailwindcss.com/docs/installation.
+
 ### Troubleshooting
+
+### Note:
+1. Any code editors will do, but please document what you are using.
+2. 
