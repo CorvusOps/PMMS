@@ -11,5 +11,5 @@
 	/*
 	 * Change this pathing when the login client is pushed
 	 */
-	header("location: ../../index.html");
+	header("location: ../../index.php");
 ?>
