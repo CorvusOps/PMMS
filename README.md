@@ -12,10 +12,10 @@ Repository for COMP 20183: Software Engineering 2's Final Requirement: Poverty a
 2. **[PHP](#php)** <br>
 3. **[Code editors](#codeEditors)** <br>
 3.1. **[Visual Code](#visual-code)** <br>
-4. ** [TailwindCSS](#TailwindCSS)** <br>
+4. **[TailwindCSS](#TailwindCSS)** <br>
 5. **[Database](#Database)** <br>
 5.1. **[MySQLWorkbench](#MySQLWorkbench)** <br>
-5.2. **[PHPMyAdmin](#PHPMyAdmin) ** via XAMPP <br>
+5.2. **[PHPMyAdmin](#PHPMyAdmin)** via XAMPP <br>
 
 
 ### Xampp
