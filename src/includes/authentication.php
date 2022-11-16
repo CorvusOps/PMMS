@@ -45,6 +45,7 @@ if(!empty($admin['clAdUsername'])){
                 $_SESSION['cm_sid']=session_id();
                 $_SESSION['ID'] = $user['clUrID'];
                 $_SESSION['Username'] = $user['clUrUsername'];
+                $_SESSION['Name'] = $user['clUrName'];
                 session_start();
 
                 header("location: ../city/cityDashboard.php");
@@ -53,6 +54,7 @@ if(!empty($admin['clAdUsername'])){
                 $_SESSION['ms_sid']=session_id();
                 $_SESSION['ID'] = $user['clUrID'];
                 $_SESSION['Username'] = $user['clUrUsername'];
+                $_SESSION['Name'] = $user['clUrName'];
                 session_start();
 
                 header("location: ../city/cityDashboard.php");
@@ -61,6 +63,7 @@ if(!empty($admin['clAdUsername'])){
                 $_SESSION['bc_sid']=session_id();
                 $_SESSION['ID'] = $user['clUrID'];
                 $_SESSION['Username'] = $user['clUrUsername'];
+                $_SESSION['Name'] = $user['clUrName'];
                 session_start();
 
                 header("location: ../barangay/barangayDashboard.php");

@@ -1,19 +1,11 @@
 <?php
 include '../includes/connectdb.php';
 
+$username = $_SESSION["Username"];
+
 // if the session id that is registered is not session id, then 
 // temporarily, return to index or maybe have an error 404
-if($_SESSION["cm_sid"] == session_id()){
-    if(!isset($_SESSION["cm_sid"]) || $_SESSION["cm_sid"] !== session_id()){
-        header("location: ../includes/error.php");
-        exit;
-    }
-}elseif($_SESSION["ms_sid"] == session_id()){
-    if(!isset($_SESSION["ms_sid"]) || $_SESSION["ms_sid"] !== session_id()){
-        header("location: ../includes/error.php");
-        exit;
-    }
-}else		
+if(isset($_SESSION["cm_sid"]) xor isset($_SESSION["ms_sid"])){	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +27,8 @@ if($_SESSION["cm_sid"] == session_id()){
             <!--content/right side div-->
             <h1 id="cityName" class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">
                  <!--must change depending on the name of the city in the database-->
-                City of San Carlos
+                City of San Carlos 
+                <?php echo $username ?>
             </h1>
             <div class="w-full flex gap-10 mt-5">
                 <!--information-->
@@ -76,3 +69,9 @@ if($_SESSION["cm_sid"] == session_id()){
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>
 </html>
+<?php 
+}else{
+    header("location: ../../index.php");
+    exit;
+}
+?>
