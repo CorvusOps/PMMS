@@ -18,7 +18,7 @@
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Barangays</h1>
             <div class="w-full flex justify-end">
-                <button class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                <button onclick="openModal('.add-modal')" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
                     Add Barangay
                 </button>
@@ -71,6 +71,11 @@
         </div>
         <!--end of full page div-->
     </div>
+
+    <!--add barangay modal-->
+    <?php include '../modals/addBarangayModal.php' ?>
+
+    <script src="../javascript/modal.js"></script>
     <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
