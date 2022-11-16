@@ -1,9 +1,15 @@
+<?php 
+    $name = $_SESSION['Name'];
+    $splitName = explode(" ", $name);
+    $removeLastName = array_pop($splitName);
+    $firstname = implode(" ", $splitName);
+?>
 <nav class="fixed h-screen w-72 bg-white px-2 py-8">
     <!--sidebar-->
     <div id="userDisp" class="flex gap-4 items-center ml-6 mb-8 px-4">
         <iconify-icon inline icon="fa-solid:user" style="color: #ffc46b;" width="40"></iconify-icon>
         <!--in other user interfaces, this should be modifiable-->
-        <h2 id="user-info" class="text-2xl text-orange-200 font-semibold">Dos</h2>
+        <h2 id="user-info" class="text-2xl text-orange-200 font-semibold"><?php echo $firstname ?></h2>
     </div>
 
     <hr class="border border-gray-200 m-4">

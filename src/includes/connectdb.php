@@ -8,6 +8,7 @@
     $server_password = "root";
     $database_name = "pmms";
     $port = 3306;
+    $errors = array();
     
     // declare a connect object variable to pass in the condition if connection failed, else continue.
     $connectdb = new mysqli($servername,$server_user,$server_password,$database_name,$port);
