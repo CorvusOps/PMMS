@@ -1,15 +1,16 @@
 <?php
+include '../includes/connectdb.php';
 
-/**FUNCTIONALITIES
+/**FUNCTIONS
  * IF USERNAME IS VALID - close the statement ;;; 
- *                          must be more than 6 char, less than 18 char;;;same as edit
+ *                      must be more than 6 char, less than 18 char;;;same as edit
  * IF PASSWORD IS VALID - close the statement ;;; 
- *                          must be more than 6 characters ;;;same as edit
+ *                      must be more than 6 characters ;;;same as edit
  * IF USERNAME IS UNAVAILABLE - close the statement ;;; 
- *                          same as edit, if an account has the same name already
+ *                      same as edit, if an account has the same name arealdy
  * ELSE THE CONDITIONS ARE MET 
  */
-if(isset($_POST['addUserBtn'])){
+if(isset($_POST['updateUserBtn'])){
   // declare retrieved variables
   $clUrUsername = trim($_POST['clUrUsername']);
   $clUrPassword = trim($_POST['clUrPassword']);
@@ -24,31 +25,26 @@ if(isset($_POST['addUserBtn'])){
     $results = mysqli_query($connectdb, $clUserquery);
     //checks if there records with the same username
     if(mysqli_num_rows($results)>0){
-      array_push($errors, "Username already exists");
-      // echo "<script>
-      //       alert('Username already exists');  
-      //       window.location = '../admin/adminAccounts.php';
-      //       </script>"; 
+        echo "<script>
+            alert('Username already exists');  
+            window.location = '../admin/adminAccounts.php';
+            </script>"; 
     }elseif(strlen($clUrPassword)<6){
-      array_push($errors, "Password must be 6 characters or more");  
-      // echo "<script>
-      //     alert('Password must be 6 characters or more');  
-      //     window.location = '../admin/adminAccounts.php';
-      //     </script>"; 
+        echo "<script>
+          alert('Password must be 6 characters or more');  
+          window.location = '../admin/adminAccounts.php';
+          </script>"; 
     }elseif(strlen($clUrUsername) < 6 || strlen($clUrUsername) > 16){
-      array_push($errors, "Username must be 6 characters or more");    
-      // echo "<script>
-      //     alert('Username must be 6 characters or more');  
-      //     window.location = '../admin/adminAccounts.php';
-      //     </script>"; 
-    // }if(!empty($errors)){
-    //   array_push($errors, "Please Resolve the errors"); 
+        echo "<script>
+          alert('Username must be 6 characters or more');  
+          window.location = '../admin/adminAccounts.php';
+          </script>"; 
     }else{
       $hashedPassword = password_hash($clUrPassword, PASSWORD_DEFAULT);
-      $usersquery = "INSERT INTO tbusers ( clUrUsername, clUrPassword, clUrName, 
-                                          clUrContactNum, clUremail, clUrLevel, clUrRole)
-                      VALUES ('$clUrUsername','$hashedPassword','$clUrName', 
-                              '$clUrContactNum','$clUremail','$clUrLevel','$clUrLevel');";
+      $usersquery = "UPDATE tbusers SET clUrUsername = '$clUrUsername', clUrPassword = '$hashedPassword',
+                                     clUrName='$clUrName', clUrContactNum = '$clUrContactNum', clUremail = '$clUremail', 
+                                     clUrLevel = '$clUrLevel', clUrRole = '$clUrLevel'
+                    WHERE clUrID = $clUrID; ";
           
           //catch mysqli exception
           if($result = mysqli_query($connectdb, $usersquery)){
@@ -58,6 +54,7 @@ if(isset($_POST['addUserBtn'])){
             window.location = '../admin/adminAccounts.php'; 
             </script>";  
           }else{
+            mysqli_close($connectdb);
             echo "<script>
             alert('Failed to add.');  
             window.location = '../admin/adminAccounts.php';
@@ -67,4 +64,5 @@ if(isset($_POST['addUserBtn'])){
     }
   }
 }
-?>
+mysqli_close($connectdb);
+ ?>

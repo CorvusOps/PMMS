@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="hover:bg-orange-200 px-6 py-2 rounded-xl mb-4 text-orange-200 hover:text-white">
-            <a href="adminAccounts.php" class="flex items-center gap-6">
+            <a href="adminAccounts.view.php" class="flex items-center gap-6">
                 <span class="iconify-inline" data-icon="fa-solid:user" style="color: #ffc46b;" data-width="25"></span>
                 <span class="">
                     Accounts

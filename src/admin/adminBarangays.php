@@ -1,3 +1,13 @@
+<?php
+include '../includes/connectdb.php';
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
+    header("location: ../../index.php");
+    exit;
+}		
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +23,7 @@
         <!--full page div-->
         
         <?php include '../includes/adminSidebar.php' ?>
-        
+
         <div class="h-full ml-72 px-12 py-6 w-full">
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Barangays</h1>

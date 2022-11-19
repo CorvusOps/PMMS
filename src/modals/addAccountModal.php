@@ -1,6 +1,6 @@
-<div class="add-modal hidden w-[500px] h-full top-0 text-md my-4 right-[20%]">
+<div class="add-modal hidden w-[500px] h-full top-0 text-md my-4 right-[20%]" id="modalUserAdd" role="dialog">
 
-        <form action="../crud/tbusersAddAccount.php" method="post" class="bg-[#f4f4f4] px-16 py-2 shadow-md shadow-gray-500">
+        <form role="form" class="bg-[#f4f4f4] px-16 py-2 shadow-md shadow-gray-500">
 
             <button type="reset" onclick="closeModal('.add-modal')">
                 <iconify-icon icon="carbon:close" width="25" id="close" class="absolute right-[20px] top-[10px] cursor-pointer"></iconify-icon>
@@ -47,7 +47,7 @@
                 <option value="3">Barangay Captian</option>
             </select>
 
-            <input type="submit" value="add" name="addUserBtn"
-                    class="uppercase mx-28 border-gray-600 px-6 p-1 w-32 rounded-xl bg-orange-300 text-white shadow-sm hover:bg-yellow-800 hover:shadow-lg mb-5 cursor-pointer">
+            <button type="button" id="userSubmit" value="add" name="addUserBtn" 
+                    class="uppercase mx-28 border-gray-600 px-6 p-1 w-32 rounded-xl bg-orange-300 text-white shadow-sm hover:bg-yellow-800 hover:shadow-lg mb-5 cursor-pointer">Submit</button>
         </form>
     </div>
