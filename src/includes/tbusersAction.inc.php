@@ -3,12 +3,15 @@
 require_once '../class/DB.class.php';
 $db = new DB();
 
+
+
 // Database table name and column ID
-$tbName = 'tbusers';
+$tblName = 'tbusers';
 $tbclID = 'clUrID';
 
 // If the form is submitted
 if(!empty($_POST['action_type'])){
+
     if($_POST['action_type'] == 'data'){
         // Fetch data based on row ID
         $conditions['where'] = array('clUrID' => $_POST['clUrID']);
@@ -50,16 +53,16 @@ if(!empty($_POST['action_type'])){
     }elseif($_POST['action_type'] == 'add'){
         $msg = '';
         $status = $verr = 0;
-        
+        echo "<script>console.log('testestestset' );</script>";
         // Get user's input
         $clUrUsername = trim($_POST['clUrUsername']);
         $clUrPassword = trim($_POST['clUrPassword']);
         $clUrName = $_POST['clUrName'];
         $clUrContactNum = $_POST['clUrContactNum'];
-        $clUremail = $_POST['clUremail'];
+        $clUrEmail = $_POST['clUremail'];
         $clUrLevel = $_POST['clUrLevel'];
-
-                
+        echo "<script>console.log('.$clUrEmail.' );</script>";
+        echo 'console.log("hotdogs")';        
         $clUsernamequery = "SELECT * FROM tbusers WHERE clUrUsername = '$clUrUsername'";
         $results = mysqli_query($connectdb, $clUsernamequery);
         $hashedPassword = password_hash($clUrPassword, PASSWORD_DEFAULT);
@@ -69,7 +72,7 @@ if(!empty($_POST['action_type'])){
             $verr = 1;
             $msg .= 'Please enter your name.<br/>';
         }
-        if(empty($clUremail) || !filter_var($clUremail, FILTER_VALIDATE_EMAIL)){
+        if(empty($clUrEmail) || !filter_var($clUrEmail, FILTER_VALIDATE_EMAIL)){
             $verr = 1;
             $msg .= 'Please enter a valid email.<br/>';
         }
@@ -132,7 +135,7 @@ if(!empty($_POST['action_type'])){
             $clUrContactNum = $_POST['clUrContactNum'];
             $clUremail = $_POST['clUremail'];
             $clUrLevel = $_POST['clUrLevel'];
-            
+           
             // Validate form fields
             if(empty($name)){
                 $verr = 1;
@@ -204,6 +207,8 @@ if(!empty($_POST['action_type'])){
         );
         echo json_encode($response);
     }
+}else{
+    echo "<script>console.log('no action type' );</script>";
 }
 
 exit;
