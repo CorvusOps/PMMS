@@ -50,4 +50,5 @@
             <button type="button" id="userSubmit" value="add" name="addUserBtn" 
                     class="uppercase mx-28 border-gray-600 px-6 p-1 w-32 rounded-xl bg-orange-300 text-white shadow-sm hover:bg-yellow-800 hover:shadow-lg mb-5 cursor-pointer">Submit</button>
         </form>
+
     </div>
