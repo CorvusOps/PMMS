@@ -56,7 +56,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                             <th class="py-2 px-5 text-center font-extralight">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="usersData">
+                    <tbody id="userData">
                         <?php $users = $db->getRows('tbusers','clUrID'); ?>
                         <?php if(!empty($users)){ foreach($users as $row){ ?>
                         <tr>

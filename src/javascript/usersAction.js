@@ -83,21 +83,21 @@ function openModal(modal) {
     document.querySelector(modal).classList.remove('hidden');
     document.querySelector(modal).classList.add('fixed');
     //problematic part, the on do not post the data
-    $('#modalUserAdd').on('submittingForm', function(e){
-        var type = $(e.relatedTarget).attr('data-type');
-        var userFunc = "userAction('add');";
-        
-        if(type == 'edit'){
-            userFunc = "userAction('edit');";
-            var rowId = $(e.relatedTarget).attr('rowID');
-            editUser(rowId);
-        }   
-        console.log(userFunc);  
-        $('#userSubmit').attr("onclick", userFunc);
-    }); 
     $("button").click(function(){
         $('#userSubmit').trigger('submittingForm');
         console.log("hotdogs sa js");
+        $('#modalUserAdd').on('submittingForm', function(e){
+            var type = $(e.relatedTarget).attr('data-type');
+            var userFunc = "userAction('add');";
+            
+            if(type == 'edit'){
+                userFunc = "userAction('edit');";
+                var rowId = $(e.relatedTarget).attr('rowID');
+                editUser(rowId);
+            }   
+            console.log(userFunc);  
+            $('#userSubmit').attr("onclick", userFunc);
+        }); 
     });
 }
 

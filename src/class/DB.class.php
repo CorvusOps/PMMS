@@ -20,9 +20,12 @@ class DB{
             // Connect to the database
             $connectdb = new mysqli( $this->servername, $this->server_user, $this->server_password, 
                                      $this->database_name, $this->port);
+            echo '<script>  console.log("gumagana ba yung db????") </script>'; 
             if($connectdb->connect_error){
                 die("Failed to connect with MySQL: " . $connectdb->connect_error);
+                echo '<script>  console.log("hindiii????") </script>'; 
             }else{
+                echo '<script>  console.log("ewaaannn????") </script>'; 
                 $this->db = $connectdb;
                 session_start();
             }

@@ -61,10 +61,11 @@ if(!empty($_POST['action_type'])){
         $clUrContactNum = $_POST['clUrContactNum'];
         $clUrEmail = $_POST['clUremail'];
         $clUrLevel = $_POST['clUrLevel'];
-        echo "<script>console.log('.$clUrEmail.' );</script>";
-        echo 'console.log("hotdogs")';        
-        $clUsernamequery = "SELECT * FROM tbusers WHERE clUrUsername = '$clUrUsername'";
-        $results = mysqli_query($connectdb, $clUsernamequery);
+        echo "<script>console.log('".$clUrEmail."' );</script>";        
+
+        //$clUsernamequery = "SELECT * FROM tbusers WHERE clUrUsername='$clUrUsername'";
+        $conditions['where'] = array('clUrUsername' => $clUrUsername);
+        $results = $db->getRows($tblName,$tbclID,$conditions);
         $hashedPassword = password_hash($clUrPassword, PASSWORD_DEFAULT);
         
         // Validate form fields
@@ -81,7 +82,7 @@ if(!empty($_POST['action_type'])){
             $msg .= 'Please enter your phone no.<br/>';
         }
         //checks if there records with the same username
-        if(mysqli_num_rows($results)>0){
+        if(!empty($results) || $results == true){
             $verr = 1;
             $msg .= 'Username already exists<br/>';
         }
