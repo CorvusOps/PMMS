@@ -1,6 +1,5 @@
 <?php
 include '../includes/connectdb.php';
-include '../crud/tbusersAddAccount.php';
 
 // if the session id that is registered is not session id, then 
 // temporarily, return to index or maybe have an error 404
@@ -32,10 +31,10 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
             
             <!--Add Button-->
             <div class="w-full flex justify-end">
-                <button id="addBtn" onclick="openModal('.add-modal')" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                <a href="addAccountPanelTemplate.php" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
                     Add User
-                </button>
+                </a>
             </div>
             
             <div class="w-full mt-4">
