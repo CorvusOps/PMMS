@@ -8,7 +8,7 @@
 </head>
 <body>
 <body>
-        <form method="post">
+        <form method="POST" action="../crud/tbfoodthresholdAddRecord.php">
             <!--Not sure if barangay id or barangay -->
             <br>
             <label for="clFTPercent">Food Threshold Percentage</label>
@@ -19,11 +19,9 @@
             <input type="text" name="clFtYear" placeholder="Year ">
 
             
-            <button type="submit" formaction="../crud/tbfoodthresholdAddRecord.php"> Sign Up </button>
+            <button type="submit" name="AddRecord" formaction="../crud/tbfoodthresholdAddRecord.php"> Add Record </button>
             <button type="reset"> Clear </button>
         </form>
-        <p>Already have an account?</p>
-
         <a href="../adminAccounts.php">
             <p>Cancel</p>
         </a>
