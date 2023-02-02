@@ -70,6 +70,14 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
             <button type="submit" name="updateUserBtn" formaction="../crud/tbusersEditAccount.php"> Update Account </button>
             <button type="reset"> Clear </button>
         </form>
+
+        <p> <?php echo  $clUrUsername ." ". 
+              $clUrPassword ." ". 
+              $clUrName ." ". 
+              $clUrContactNum." ". 
+              $clUrEmail." ". 
+              $clUrLevel." ". 
+              $clUrID; ?></p>
         <!--
             <p>Already have an account?</p>
         -->

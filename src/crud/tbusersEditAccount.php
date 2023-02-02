@@ -10,15 +10,14 @@ include '../includes/connectdb.php';
  *                      same as edit, if an account has the same name arealdy
  * ELSE THE CONDITIONS ARE MET 
  */
-if(isset($_POST['updateUserBtn'])){
   // declare retrieved variables
-  $clUrID = mysqli_real_escape_string($connectdb,$_POST['clUrID']);
-  $clUrUsername = mysqli_real_escape_string($connectdb,trim($_POST['clUrUsername']));
-  $clUrPassword = mysqli_real_escape_string($connectdb,trim($_POST['clUrPassword']));
-  $clUrName = mysqli_real_escape_string($connectdb,$_POST['clUrName']);
-  $clUrContactNum = mysqli_real_escape_string($connectdb,$_POST['clUrContactNum']);
-  $clUremail = mysqli_real_escape_string($connectdb,$_POST['clUrEmail']);
-  $clUrLevel = mysqli_real_escape_string($connectdb,$_POST['clUrLevel']);
+  $clUrID = (int) $_POST['clUrID'];
+  $clUrUsername = trim($_POST['clUrUsername']);
+  $clUrPassword = trim($_POST['clUrPassword']);
+  $clUrName = $_POST['clUrName'];
+  $clUrContactNum = $_POST['clUrContactNum'];
+  $clUrEmail = $_POST['clUrEmail'];
+  $clUrLevel = $_POST['clUrLevel'];
 
   //Check if the username and password is set
   if(isset($clUrUsername)&& isset($clUrPassword)){
@@ -37,18 +36,19 @@ if(isset($_POST['updateUserBtn'])){
           </script>"; 
     }else{
       $hashedPassword = password_hash($clUrPassword, PASSWORD_DEFAULT);
+      //$intID = intval($clUrID);
       $usersquery = " UPDATE tbusers SET 
-                    clUrUsername = '$clUrUsername',
-                    clUrPassword = '$hashedPassword',
-                    clUrName = '$clUrName',
-                    clUrContactNum = '$clUrContactNum',
-                    clUremail = '$clUremail', 
-                    clUrLevel = '$clUrLevel', 
-                    clUrRole = '$clUrLevel'
-                    WHERE clUrID ='$clUrID' ; ";
+      clUrUsername = '$clUrUsername', 
+      clUrPassword = '$hashedPassword', 
+      clUrName = '$clUrName', 
+      clUrContactNum = '$clUrContactNum', 
+      clUrEmail = '$clUrEmail', 
+      clUrLevel = '$clUrLevel', 
+      clUrRole = '$clUrLevel' WHERE clUrID = $clUrID";
           
+              
           //catch mysqli exception
-          if(mysqli_query($connectdb, $usersquery)){
+          if(mysqli_query($connectdb,$usersquery)){
             //mysqli_free_result($result);
             echo "<script> 
             alert('Account is successfully updated!'); 
@@ -64,6 +64,6 @@ if(isset($_POST['updateUserBtn'])){
           }
     }
   }
-}
+
 //mysqli_close($connectdb);
- ?>
+?>
