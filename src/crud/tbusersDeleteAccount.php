@@ -1,6 +1,7 @@
 <?php
 include '../includes/connectdb.php';
 
+//declare retrived variables
 $clUrID = $_GET['clUrID'];
 
 $updatedeletequery = " UPDATE tbusers SET 
