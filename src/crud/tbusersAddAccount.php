@@ -1,4 +1,5 @@
 <?php
+include '../includes/connectdb.php';
 
 /**FUNCTIONALITIES
  * IF USERNAME IS VALID - close the statement ;;; 
@@ -51,7 +52,7 @@ if(isset($_POST['addUserBtn'])){
                               '$clUrContactNum','$clUremail','$clUrLevel','$clUrLevel');";
           
           //catch mysqli exception
-          if($result = mysqli_query($connectdb, $usersquery)){
+          if(mysqli_query($connectdb, $usersquery)){
             //mysqli_free_result($result);
             echo "<script> 
             alert('Account is successfully added!'); 

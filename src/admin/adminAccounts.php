@@ -1,6 +1,5 @@
 <?php
 include '../includes/connectdb.php';
-include '../crud/tbusersAddAccount.php';
 
 // if the session id that is registered is not session id, then 
 // temporarily, return to index or maybe have an error 404
@@ -32,10 +31,10 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
             
             <!--Add Button-->
             <div class="w-full flex justify-end">
-                <button id="addBtn" onclick="openModal('.add-modal')" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                <a href="addAccountPanelTemplate.php" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
                     Add User
-                </button>
+                </a>
             </div>
             
             <div class="w-full mt-4">
@@ -73,12 +72,12 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrStatus"].'</td>';
                                     echo'<td class="bg-white top-0 p-2">';
                                     // Change location into the update page
-                                        echo '  <button href="#" onclick="openModal('.'.update-modal'.')">
+                                        echo '  <a href="updateAccountPanelTemplate.php?clUrID='.$row["clUrID"].'">
                                                     <span id="editIcon" class="iconify" 
                                                         data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                                </button>';
+                                                </a>';
                                     // Change location into the delete page
-                                        echo '  <a href="#"> 
+                                        echo '  <a href="../crud/tbusersDeleteAccount.php?clUrID='.$row["clUrID"].'"> 
                                                     <span id="deleteIcon" class="iconify" 
                                                         data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
                                                 </a>';

@@ -10,13 +10,13 @@ include '../includes/connectdb.php';
  *                      same as edit, if an account has the same name arealdy
  * ELSE THE CONDITIONS ARE MET 
  */
-if(isset($_POST['updateUserBtn'])){
   // declare retrieved variables
+  $clUrID = (int) $_POST['clUrID'];
   $clUrUsername = trim($_POST['clUrUsername']);
   $clUrPassword = trim($_POST['clUrPassword']);
   $clUrName = $_POST['clUrName'];
   $clUrContactNum = $_POST['clUrContactNum'];
-  $clUremail = $_POST['clUremail'];
+  $clUrEmail = $_POST['clUrEmail'];
   $clUrLevel = $_POST['clUrLevel'];
 
   //Check if the username and password is set
@@ -24,12 +24,7 @@ if(isset($_POST['updateUserBtn'])){
     $clUserquery = "SELECT * FROM tbusers WHERE clUrUsername = '$clUrUsername'";
     $results = mysqli_query($connectdb, $clUserquery);
     //checks if there records with the same username
-    if(mysqli_num_rows($results)>0){
-        echo "<script>
-            alert('Username already exists');  
-            window.location = '../admin/adminAccounts.php';
-            </script>"; 
-    }elseif(strlen($clUrPassword)<6){
+    if(strlen($clUrPassword)<6){
         echo "<script>
           alert('Password must be 6 characters or more');  
           window.location = '../admin/adminAccounts.php';
@@ -41,16 +36,22 @@ if(isset($_POST['updateUserBtn'])){
           </script>"; 
     }else{
       $hashedPassword = password_hash($clUrPassword, PASSWORD_DEFAULT);
-      $usersquery = "UPDATE tbusers SET clUrUsername = '$clUrUsername', clUrPassword = '$hashedPassword',
-                                     clUrName='$clUrName', clUrContactNum = '$clUrContactNum', clUremail = '$clUremail', 
-                                     clUrLevel = '$clUrLevel', clUrRole = '$clUrLevel'
-                    WHERE clUrID = $clUrID; ";
+      //$intID = intval($clUrID);
+      $usersquery = " UPDATE tbusers SET 
+      clUrUsername = '$clUrUsername', 
+      clUrPassword = '$hashedPassword', 
+      clUrName = '$clUrName', 
+      clUrContactNum = '$clUrContactNum', 
+      clUrEmail = '$clUrEmail', 
+      clUrLevel = '$clUrLevel', 
+      clUrRole = '$clUrLevel' WHERE clUrID = $clUrID";
           
+              
           //catch mysqli exception
-          if($result = mysqli_query($connectdb, $usersquery)){
+          if(mysqli_query($connectdb,$usersquery)){
             //mysqli_free_result($result);
             echo "<script> 
-            alert('Account is successfully added!'); 
+            alert('Account is successfully updated!'); 
             window.location = '../admin/adminAccounts.php'; 
             </script>";  
           }else{
@@ -63,6 +64,6 @@ if(isset($_POST['updateUserBtn'])){
           }
     }
   }
-}
-mysqli_close($connectdb);
- ?>
+
+//mysqli_close($connectdb);
+?>
