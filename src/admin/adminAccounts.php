@@ -72,12 +72,12 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrStatus"].'</td>';
                                     echo'<td class="bg-white top-0 p-2">';
                                     // Change location into the update page
-                                        echo '  <button href="#" onclick="openModal('.'.update-modal'.')">
+                                        echo '  <a href="updateAccountPanelTemplate.php?clUrID='.$row["clUrID"].'">
                                                     <span id="editIcon" class="iconify" 
                                                         data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                                </button>';
+                                                </a>';
                                     // Change location into the delete page
-                                        echo '  <a href="#"> 
+                                        echo '  <a href="../crud/tbusersDeleteAccount.php?clUrID='.$row["clUrID"].'"> 
                                                     <span id="deleteIcon" class="iconify" 
                                                         data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
                                                 </a>';
