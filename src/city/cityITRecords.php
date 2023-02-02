@@ -1,3 +1,14 @@
+<?php
+include '../includes/connectdb.php';
+include '../crud/tbusersAddAccount.php';
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["cm_sid"]) || $_SESSION["cm_sid"] !== session_id()){
+    header("location: ../../index.php");
+    exit;
+}        
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,15 +63,15 @@
                       echo'      <td class="py-5 px-5">'.$row["tbItPercent"].'</td>';
                       echo'<td class="bg-white top-0 p-2">';
                       // Change location into the update page
-                          echo '  <button href="#" onclick="openModal('.'.update-modal'.')">
-                                      <span id="editIcon" class="iconify" 
-                                          data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                  </button>';
+                      echo '<a href="updateCityITRecordsTemplate.php?tbItID='.$row['tbItID'].'">
+                            <span id="editIcon" class="iconify" 
+                            data-icon="bxs:edit" style="color: #77c9e3;" data-width="25">
+                             </span></a>';
                       // Change location into the delete page
-                          echo '  <a href="#"> 
-                                      <span id="deleteIcon" class="iconify" 
-                                          data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                  </a>';
+                      echo ' <a href="../crud/tbincomethresholdDeleteRecord.php?tbItID='.$row['tbItID'].'">
+                         <span id="deleteIcon" class="iconify" 
+                              data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                         </a>';
                       echo'</td>';
                       echo'  </tr>';
                         }

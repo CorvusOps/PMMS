@@ -40,6 +40,7 @@ if(mysqli_num_rows($FTresults)>0){
 else{
     echo "<script>
     alert('Failed to add.'); 
+    window.location = '../city/addCityFTRecordsTemplate.php';
     </script>"; 
 }
 

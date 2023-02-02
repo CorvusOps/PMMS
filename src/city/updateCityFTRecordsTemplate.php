@@ -22,7 +22,7 @@ if(isset($_GET["clFtID"]) && !empty($_GET["clFtID"])){
 </head>
 <body>
 <body>
-        <form method="POST" action="../crud/tbfoodthresholdAddRecord.php">
+        <form method="POST">
             <!--Not sure if barangay id or barangay -->
             <?php
             echo'<br>';

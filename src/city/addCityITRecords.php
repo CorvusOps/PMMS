@@ -8,18 +8,18 @@
 </head>
 <body>
 <body>
-        <form method="POST" action="../crud/tbfoodthresholdAddRecord.php">
+        <form method="POST">
             <!--Not sure if barangay id or barangay -->
             <br>
-            <label for="clFTPercent">Food Threshold Percentage</label>
-            <input type="text" name="clFTPercent" placeholder="Food Threshold Percentage">
+            <label for="tbItPercent">Income Threshold Percentage</label>
+            <input type="text" name="tbItPercent" placeholder="Income Threshold Percentage">
             
             <br>
-            <label for="clFtYear">Year</label>
-            <input type="text" name="clFtYear" placeholder="Year ">
+            <label for="clITYear">Year</label>
+            <input type="text" name="clITYear" placeholder="Year">
 
             
-            <button type="submit" name="AddRecord" formaction="../crud/tbfoodthresholdAddRecord.php"> Add Record </button>
+            <button type="submit" name="AddRecord" formaction="../crud/tbincomethresholdAddRecord.php"> Add Record </button>
             <button type="reset"> Clear </button>
         </form>
         <a href="../cityFTRecords">
