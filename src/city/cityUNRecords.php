@@ -28,6 +28,9 @@
             <div class="w-full mt-4">
                 <!--table for records-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
+                    <?php 
+                          $UNdata = mysqli_query($connectdb,"SELECT * FROM tbunemplyment");
+                    ?>
                     <thead>
                         <!--for the sake of showing, this is a temporary format-->
                         <!--the padding should be adjusted in actual code-->
@@ -40,36 +43,28 @@
                     </thead>
                     <tbody>
                         <!--when backend is integrated there should be multiple table data thru php-->
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>                        
+                        <?php    
+                    while($row = $UNdata->fetch_assoc()) {
+                      echo' <tr class="border-b-2 border-orange-300">';
+                      echo'      <td class="py-5 px-5">'.$row["clUnID"].'</td>';
+                      echo'      <td class="py-5 px-5">'.$row["clBrID"].'</td>';
+                      echo'      <td class="py-5 px-5">'.$row["clUnYear"].'</td>';
+                      echo'      <td class="py-5 px-5">'.$row["clUnPercent"].'</td>';
+                      echo'<td class="bg-white top-0 p-2">';
+                      // Change location into the update page
+                          echo '  <button href="#" onclick="openModal('.'.update-modal'.')">
+                                      <span id="editIcon" class="iconify" 
+                                          data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
+                                  </button>';
+                      // Change location into the delete page
+                          echo '  <a href="#"> 
+                                      <span id="deleteIcon" class="iconify" 
+                                          data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                                  </a>';
+                      echo'</td>';
+                      echo'  </tr>';
+                        }
+                    ?>                   
                     </tbody>
                 </table>
                 <!--end of table-->
