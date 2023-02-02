@@ -1,3 +1,14 @@
+<?php
+include '../includes/connectdb.php';
+include '../crud/tbusersAddAccount.php';
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
+    header("location: ../../index.php");
+    exit;
+}		
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +28,10 @@
        <div class="h-full ml-72 px-12 py-6 w-full">
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Accounts</h1>
+            <?php include('../includes/errors.php'); ?>
+            
+            <!--Add Button-->
             <div class="w-full flex justify-end">
-                <!--Temporarily Changed into anchor so I can test the adding of user-->
                 <button id="addBtn" onclick="openModal('.add-modal')" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
                     Add User
@@ -30,102 +43,52 @@
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <thead>
                         <tr class="shadow-sm shadow-gray-500">
-                            <th class="py-2 px-5 text-left font-extralight">id</th>
-                            <th class="py-2 px-5 text-left font-extralight">username</th>
+                            <th class="py-2 px-5 text-left font-extralight">ID</th>
+                            <th class="py-2 px-5 text-left font-extralight">Username</th>
                             <th class="py-2 px-5 text-left font-extralight">Name</th>
                             <th class="py-2 px-5 text-left font-extralight">Contact Number</th>
                             <th class="py-2 px-5 text-left font-extralight">Email Address</th>
                             <th class="py-2 px-5 text-left font-extralight">Role</th>
+                            <th class="py-2 px-5 text-left font-extralight">Status</th>                          
                             <th class="py-2 px-5 text-center font-extralight">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!--when backend is integrated there should be multiple table data thru php-->
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit and delete icons-->
-                                <a href="#" onclick="openModal('.update-modal')">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                                <a href="#"> 
-                                    <span id="deleteIcon" class="iconify" data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit and delete icons-->
-                                <a href="#" onclick="openModal('.update-modal')">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                                <a href="#"> 
-                                    <span id="deleteIcon" class="iconify" data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit and delete icons-->
-                                <a href="#" onclick="openModal('.update-modal')">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                                <a href="#"> 
-                                    <span id="deleteIcon" class="iconify" data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit and delete icons-->
-                                <a href="#" onclick="openModal('.update-modal')">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                                <a href="#"> 
-                                    <span id="deleteIcon" class="iconify" data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit and delete icons-->
-                                <a href="#" onclick="openModal('.update-modal')">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                                <a href="#"> 
-                                    <span id="deleteIcon" class="iconify" data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>                        
+                        <?php 
+                        $userListData = "SELECT * FROM tbusers ";
+                        if(!$connectdb -> query($userListData)){
+                            array_push($errors, "Errorcode:". $connectdb->errno);    
+                        }
+                        $result = $connectdb -> query($userListData);
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()) {
+                                echo'<tr>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrID"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrUsername"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrName"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrContactNum"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrEmail"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrRole"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrStatus"].'</td>';
+                                    echo'<td class="bg-white top-0 p-2">';
+                                    // Change location into the update page
+                                        echo '  <button href="#" onclick="openModal('.'.update-modal'.')">
+                                                    <span id="editIcon" class="iconify" 
+                                                        data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
+                                                </button>';
+                                    // Change location into the delete page
+                                        echo '  <a href="#"> 
+                                                    <span id="deleteIcon" class="iconify" 
+                                                        data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                                                </a>';
+                                    echo'</td>';
+                            }
+                        }   
+                            echo '</tr>';  
+                            $result->free_result();
+                        ?>
+                                            
                     </tbody>
                 </table>
                 <!--end of table-->
@@ -141,6 +104,7 @@
     <!--update user modal-->
     <?php include '../modals/updateAccountModal.php' ?>
 
+    
     <script src="../javascript/modal.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
