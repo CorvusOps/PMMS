@@ -11,7 +11,7 @@ include '../includes/connectdb.php';
  * ELSE THE CONDITIONS ARE MET 
  */
   // declare retrieved variables
-  $clUrID = (int) $_POST['clUrID'];
+  $clUrID = $_POST['clUrID'];
   $clUrUsername = trim($_POST['clUrUsername']);
   $clUrPassword = trim($_POST['clUrPassword']);
   $clUrName = $_POST['clUrName'];
@@ -20,9 +20,10 @@ include '../includes/connectdb.php';
   $clUrLevel = $_POST['clUrLevel'];
 
   //Check if the username and password is set
-  if(isset($clUrUsername)&& isset($clUrPassword)){
-    $clUserquery = "SELECT * FROM tbusers WHERE clUrUsername = '$clUrUsername'";
-    $results = mysqli_query($connectdb, $clUserquery);
+  if(isset($clUrUsername) && isset($clUrPassword)){
+    //$clUserquery = "SELECT * FROM tbusers WHERE clUrUsername = '$clUrUsername'";
+    //$results = mysqli_query($connectdb, $clUserquery);
+    //$user = mysqli_fetch_array($results);
     //checks if there records with the same username
     if(strlen($clUrPassword)<6){
         echo "<script>
@@ -44,24 +45,24 @@ include '../includes/connectdb.php';
       clUrContactNum = '$clUrContactNum', 
       clUrEmail = '$clUrEmail', 
       clUrLevel = '$clUrLevel', 
-      clUrRole = '$clUrLevel' WHERE clUrID = $clUrID";
+      clUrRole = '$clUrLevel' WHERE clUrID = '$clUrID';";
           
               
           //catch mysqli exception
-          if(mysqli_query($connectdb,$usersquery)){
-            //mysqli_free_result($result);
-            echo "<script> 
-            alert('Account is successfully updated!'); 
-            window.location = '../admin/adminAccounts.php'; 
-            </script>";  
-          }else{
-            mysqli_close($connectdb);
-            echo "<script>
-            alert('Failed to add.');  
-            window.location = '../admin/adminAccounts.php';
-            </script>"; 
-            
-          }
+      if(mysqli_query($connectdb,$usersquery)){
+        //mysqli_free_result($result);
+        echo "<script> 
+        alert('Account is successfully updated!'); 
+        window.location = '../admin/adminAccounts.php'; 
+        </script>";  
+      }else{
+        mysqli_close($connectdb);
+        echo "<script>
+        alert('Failed to update.');  
+        window.location = '../admin/adminAccounts.php';
+        </script>"; 
+        
+      }
     }
   }
 
