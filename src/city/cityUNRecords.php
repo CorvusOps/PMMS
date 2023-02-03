@@ -1,3 +1,13 @@
+<?php
+include '../includes/connectdb.php';
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["cm_sid"]) || $_SESSION["cm_sid"] !== session_id()){
+    header("location: ../../index.php");
+    exit;
+}        
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +39,7 @@
                 <!--table for records-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <?php 
-                          $UNdata = mysqli_query($connectdb,"SELECT * FROM tbunemplyment");
+                          $UNdata = mysqli_query($connectdb,"SELECT * FROM tbunemployment");
                     ?>
                     <thead>
                         <!--for the sake of showing, this is a temporary format-->
@@ -52,17 +62,17 @@
                       echo'      <td class="py-5 px-5">'.$row["clUnPercent"].'</td>';
                       echo'<td class="bg-white top-0 p-2">';
                       // Change location into the update page
-                          echo '  <button href="#" onclick="openModal('.'.update-modal'.')">
-                                      <span id="editIcon" class="iconify" 
-                                          data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                  </button>';
+                          echo '<a href="updateCityUNRecordsTemplate.php?clUnID='.$row['clUnID'].'">
+                                <span id="editIcon" class="iconify" 
+                                data-icon="bxs:edit" style="color: #77c9e3;" data-width="25">
+                                </span></a>';
                       // Change location into the delete page
-                          echo '  <a href="#"> 
-                                      <span id="deleteIcon" class="iconify" 
-                                          data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                  </a>';
+                          echo   ' <a href="../crud/tbunemploymentDeleteRecord.php?clUnID='.$row['clUnID'].'">
+                                   <span id="deleteIcon" class="iconify" 
+                                   data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                                   </a>';
                       echo'</td>';
-                      echo'  </tr>';
+                      echo'</tr>';
                         }
                     ?>                   
                     </tbody>

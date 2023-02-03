@@ -11,18 +11,18 @@
         <form method="POST">
             <!--Not sure if barangay id or barangay -->
             <br>
-            <label for="tbItPercent">Income Threshold Percentage</label>
-            <input type="text" name="tbItPercent" placeholder="Income Threshold Percentage">
+            <label for="clUnPercent">Unemployment Percentage</label>
+            <input type="text" name="clUnPercent" placeholder="Unemployment Percentage">
             
             <br>
-            <label for="clITYear">Year</label>
-            <input type="text" name="clITYear" placeholder="Year">
+            <label for="clUnYear">Year</label>
+            <input type="text" name="clUnYear" placeholder="Year">
 
             
-            <button type="submit" name="AddRecord" formaction="../crud/tbincomethresholdAddRecord.php"> Add Record </button>
+            <button type="submit" name="AddRecord" formaction="../crud/tbunemploymentAddRecord.php"> Add Record </button>
             <button type="reset"> Clear </button>
         </form>
-        <a href="../cityITRecords">
+        <a href="../cityUNRecords">
             <p>Cancel</p>
         </a>
     </body>

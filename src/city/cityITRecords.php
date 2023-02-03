@@ -1,6 +1,6 @@
 <?php
 include '../includes/connectdb.php';
-include '../crud/tbusersAddAccount.php';
+
 
 // if the session id that is registered is not session id, then 
 // temporarily, return to index or maybe have an error 404
