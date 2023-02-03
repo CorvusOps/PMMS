@@ -1,3 +1,13 @@
+<?php
+include '../includes/connectdb.php';
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
+    header("location: ../../index.php");
+    exit;
+}		
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +28,10 @@
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Barangays</h1>
             <div class="w-full flex justify-end">
-                <button onclick="openModal('.add-modal')" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                <a href="addBarangayPanelTemplate.php" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
                     Add Barangay
-                </button>
+                </a>
             </div>
             
             <div class="w-full mt-4">
@@ -34,35 +44,34 @@
                             <th class="py-2 pl-20 pr-5 text-left font-extralight">id</th>
                             <th class="py-2 pl-20 pr-5 text-left font-extralight">Barangay Name</th>
                             <th class="py-2 px-5 text-left font-extralight">Barangay Captain</th>
+                            <th class="py-2 px-5 text-center font-extralight">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!--when backend is integrated there should be multiple table data thru php-->
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>                        
+                        <?php 
+                        $barangayListData = "SELECT * FROM tbbarangay ";
+                        if(!$connectdb -> query($barangayListData)){
+                            array_push($errors, "Errorcode:". $connectdb->errno);    
+                        }
+                        $result = $connectdb -> query($barangayListData);
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()) {
+                                echo'<tr>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clBrID"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clBrName"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrID"].'</td>';
+                                    echo'<td class="bg-white top-0 p-2">';
+                                    // Change location into the update page
+                                        echo '  <a href="updateBarangayPanelTemplate.php?clUrID='.$row["clUrID"].'">
+                                                    <span id="editIcon" class="iconify" 
+                                                        data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
+                                                </a>';
+                                    echo'</td>';
+                            }
+                        }   
+                            echo '</tr>';  
+                            $result->free_result();
+                        ?>                      
                     </tbody>
                 </table>
                 <!--end of table-->
