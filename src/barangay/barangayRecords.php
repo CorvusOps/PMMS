@@ -1,3 +1,14 @@
+<?php
+include '../includes/connectdb.php';
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
+    header("location: ../../index.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +28,6 @@
         <div class="h-full ml-72 px-12 py-6 w-full">
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Poverty and Malnutrition Records</h1>
-            <div class="w-full flex justify-end">
-                <button class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
-                    <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
-                    Add Record
-                </button>
-            </div>
             
             <div class="w-full mt-4">
                 <!--table for users-->

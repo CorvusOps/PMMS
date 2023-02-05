@@ -8,6 +8,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
