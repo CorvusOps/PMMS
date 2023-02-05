@@ -5,7 +5,7 @@
     // declare variables related to your xampp and sql config
     $servername = "localhost";
     $server_user = "root";
-    $server_password = "";
+    $server_password = "root";
     $database_name = "pmms";
     $port = 3306;
     $errors = array();

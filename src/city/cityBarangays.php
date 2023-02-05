@@ -1,3 +1,15 @@
+<?php
+include '../includes/connectdb.php';
+
+$username = $_SESSION["Username"];
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){	
+    header("location: ../../index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +30,10 @@
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Barangays</h1>
             <div class="w-full flex justify-end">
-                <button onclick="openModal('.add-modal')" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                <a href="addBarangayPanelTemplate.php" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
                     Add Barangay
-                </button>
+                </a>
             </div>
             
             <div class="w-full mt-4">
@@ -37,32 +49,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!--when backend is integrated there should be multiple table data thru php-->
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>                        
+                    <?php 
+                        $barangayListData = "SELECT br.clBrName, br.clBrID, br.clUrID, ur.clUrName
+                                            FROM pmms.tbbarangay AS br LEFT JOIN pmms.tbusers AS ur 
+                                            ON br.clUrID = ur.clUrID";
+                        if(!$connectdb -> query($barangayListData)){
+                            array_push($errors, "Errorcode:". $connectdb->errno);    
+                        }
+                        $result = $connectdb -> query($barangayListData);
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()) {
+                                echo'<tr>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clBrID"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clBrName"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrID"].' - '.$row["clUrName"].'</td>';
+
+                            }
+                        }   
+                            echo '</tr>';  
+                            $result->free_result();
+                        ?>       
                     </tbody>
                 </table>
                 <!--end of table-->

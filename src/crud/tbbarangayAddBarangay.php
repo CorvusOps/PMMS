@@ -1,30 +1,28 @@
 <?php
 include '../includes/connectdb.php';
 
-/**FUNCTIONS
- * IF USERNAME IS VALID - close the statement ;;; 
- *                      must be more than 6 char, less than 18 char;;;same as edit
- * IF PASSWORD IS VALID - close the statement ;;; 
- *                      must be more than 6 characters ;;;same as edit
- * IF USERNAME IS UNAVAILABLE - close the statement ;;; 
- *                      same as edit, if an account has the same name arealdy
- * ELSE THE CONDITIONS ARE MET 
- */
-if(isset($_POST['addBarangayBtn'])){
+var_dump($_POST);
+var_dump($_REQUEST);
+
+/**ERROR HANDLING
+* PUT THE ERROR HANDLING STUFF HERE
+* IF BARANGAY NAME AND CAPTAIN IS ALREADY SET
+*/
+
+if(isset($_POST['addBrgyBtn'])){
   // declare retrieved variables
   $clBrName = $_POST['clBrName'];
   $clUrID = $_POST['clUrID'];
 
   //Check if the barangay name and barangay captain is already set.
   if(isset($clBrName) && isset($clUrID)){
-    $clUserQuery = "SELECT b.clBrName, b.clUrID, u.clUrID FROM tbbarangay AS b 
-                    INNER JOIN tbusers AS u 
-                    WHERE b.clUrID = '$clUrID' && b.clUrID = u.clUrID ";
+    $clUserQuery = "SELECT clBrName, clUrID FROM tbbarangay 
+                    WHERE clUrID = $clUrID OR clBrName = '$clBrName'";
     $results = mysqli_query($connectdb, $clUserQuery);
     //checks if there records with the same username
     if(mysqli_num_rows($results)>0){
-        echo "<script>
-            alert('User has already assigned into a barangay');  
+        echo "<script> 
+            alert('Barangay / Barangay Captain has already exist.');  
             window.location = '../admin/adminBarangays.php';
             </script>"; 
     }else{
@@ -35,7 +33,7 @@ if(isset($_POST['addBarangayBtn'])){
           if($result = mysqli_query($connectdb, $barangayquery)){
             //mysqli_free_result($result);
             echo "<script> 
-            alert('Barangay Captain is successfully added!'); 
+            alert('Barangay Captain is successfully assigned!'); 
             window.location = '../admin/adminBarangays.php'; 
             </script>";  
           }else{

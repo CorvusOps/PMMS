@@ -5,7 +5,10 @@ $username = $_SESSION["Username"];
 
 // if the session id that is registered is not session id, then 
 // temporarily, return to index or maybe have an error 404
-if(isset($_SESSION["cm_sid"]) xor isset($_SESSION["ms_sid"])){	
+if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){	
+    header("location: ../../index.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +30,7 @@ if(isset($_SESSION["cm_sid"]) xor isset($_SESSION["ms_sid"])){
             <!--content/right side div-->
             <h1 id="cityName" class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">
                  <!--must change depending on the name of the city in the database-->
-                City of San Carlos 
-                <?php echo $username ?>
+                City of San Carlos
             </h1>
             <div class="w-full flex gap-10 mt-5">
                 <!--information-->
@@ -69,9 +71,3 @@ if(isset($_SESSION["cm_sid"]) xor isset($_SESSION["ms_sid"])){
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>
 </html>
-<?php 
-}else{
-    header("location: ../../index.php");
-    exit;
-}
-?>

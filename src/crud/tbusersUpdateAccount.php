@@ -1,26 +1,31 @@
 <?php
 include '../includes/connectdb.php';
 
-/**FUNCTIONS
- * IF USERNAME IS VALID - close the statement ;;; 
- *                      must be more than 6 char, less than 18 char;;;same as edit
- * IF PASSWORD IS VALID - close the statement ;;; 
- *                      must be more than 6 characters ;;;same as edit
- * IF USERNAME IS UNAVAILABLE - close the statement ;;; 
- *                      same as edit, if an account has the same name arealdy
- * ELSE THE CONDITIONS ARE MET 
- */
-  // declare retrieved variables
-  $clUrID = $_POST['clUrID'];
+var_dump($_POST);
+print("\n");
+var_dump($_REQUEST);
+
+if(isset($_POST['addUserBtn'])){
+    /**ERROR HANDLINGS
+   * IF USERNAME IS VALID - close the statement ;;; 
+   *                      must be more than 6 char, less than 18 char;;;same as edit
+   * IF PASSWORD IS VALID - close the statement ;;; 
+   *                      must be more than 6 characters ;;;same as edit
+   * IF USERNAME IS UNAVAILABLE - close the statement ;;; 
+   *                      same as edit, if an account has the same name arealdy
+   * ELSE THE CONDITIONS ARE MET 
+   */
+    // declare retrieved variables
   $clUrUsername = trim($_POST['clUrUsername']);
   $clUrPassword = trim($_POST['clUrPassword']);
   $clUrName = $_POST['clUrName'];
   $clUrContactNum = $_POST['clUrContactNum'];
   $clUrEmail = $_POST['clUrEmail'];
   $clUrLevel = $_POST['clUrLevel'];
+  $clUrID = $_POST['clUrID'];
 
   //Check if the username and password is set
-  if(isset($clUrUsername) && isset($clUrPassword)){
+  if(isset($clUrUsername) && isset($clUrPassword) && isset($clUrID)){
     //$clUserquery = "SELECT * FROM tbusers WHERE clUrUsername = '$clUrUsername'";
     //$results = mysqli_query($connectdb, $clUserquery);
     //$user = mysqli_fetch_array($results);
@@ -38,17 +43,19 @@ include '../includes/connectdb.php';
     }else{
       $hashedPassword = password_hash($clUrPassword, PASSWORD_DEFAULT);
       //$intID = intval($clUrID);
-      $usersquery = " UPDATE tbusers SET 
+      $usersquery = " UPDATE PMMS.tbusers SET 
       clUrUsername = '$clUrUsername', 
       clUrPassword = '$hashedPassword', 
       clUrName = '$clUrName', 
       clUrContactNum = '$clUrContactNum', 
       clUrEmail = '$clUrEmail', 
-      clUrLevel = '$clUrLevel', 
-      clUrRole = '$clUrLevel' WHERE clUrID = '$clUrID';";
-          
-              
-          //catch mysqli exception
+      clUrLevel = $clUrLevel, 
+      clUrRole = $clUrLevel 
+      WHERE clUrID = $clUrID; ";
+            
+      //print($usersquery);
+
+      //catch mysqli exception
       if(mysqli_query($connectdb,$usersquery)){
         //mysqli_free_result($result);
         echo "<script> 
@@ -65,6 +72,6 @@ include '../includes/connectdb.php';
       }
     }
   }
-
+}
 //mysqli_close($connectdb);
 ?>
