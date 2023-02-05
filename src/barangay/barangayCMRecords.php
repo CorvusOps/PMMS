@@ -1,3 +1,14 @@
+<?php
+include '../includes/connectdb.php';
+
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
+    header("location: ../../index.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +27,12 @@
             
         <div class="h-full ml-72 px-12 py-6 w-full">
             <!--content/right side div-->
-            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Child Malnutrition</h1>
+            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Child Malnutrition Records</h1>
             <div class="w-full flex justify-end">
-                <button class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                <a href="addbarangayCMRecords.php" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
                     Add Record
-                </button>
+                </a>
             </div>
             
             <div class="w-full mt-4">
@@ -45,7 +56,7 @@
                             <td class="py-2 px-5"></td>
                             <td class="py-2 px-5 flex gap-2 items-center justify-center">
                                 <!--edit icon-->
-                                <a href="#">
+                                <a href="updatebarangayCMRecords.php">
                                     <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
                                 </a>
                             </td>
@@ -57,7 +68,7 @@
                             <td class="py-2 px-5"></td>
                             <td class="py-2 px-5 flex gap-2 items-center justify-center">
                                 <!--edit icons-->
-                                <a href="#">
+                                <a href="updatebarangayCMRecords.php">
                                     <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
                                 </a>
                             </td>
@@ -69,7 +80,7 @@
                             <td class="py-2 px-5"></td>
                             <td class="py-2 px-5 flex gap-2 items-center justify-center">
                                 <!--edit icons-->
-                                <a href="#">
+                                <a href="updatebarangayCMRecords.php">
                                     <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
                                 </a>
                             </td>
@@ -81,7 +92,7 @@
                             <td class="py-2 px-5"></td>
                             <td class="py-2 px-5 flex gap-2 items-center justify-center">
                                 <!--edit icons-->
-                                <a href="#">
+                                <a href="updatebarangayCMRecords.php">
                                     <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
                                 </a>
                             </td>
@@ -93,7 +104,7 @@
                             <td class="py-2 px-5"></td>
                             <td class="py-2 px-5 flex gap-2 items-center justify-center">
                                 <!--edit icons-->
-                                <a href="#">
+                                <a href="updatebarangayCMRecords.php">
                                     <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
                                 </a>
                             </td>
