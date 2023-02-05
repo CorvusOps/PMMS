@@ -58,10 +58,14 @@ if (isset($_POST['login'])){
                     header("location: ../city/cityDashboard.php");
                     break;
                 case "BC":
+                    $brID = $user['clUrID'];
+                    $barangayquery = mysqli_query($connectdb, " SELECT * FROM tbbarangay WHERE clUrID = '$brID'");
+                    $barangay = mysqli_fetch_array($barangayquery);
                     $_SESSION['bc_sid'] = session_id();
                     $_SESSION['ID'] = $user['clUrID'];
                     $_SESSION['Username'] = $user['clUrUsername'];
                     $_SESSION['Name'] = $user['clUrName'];
+                    $_SESSION['Barangay'] = $barangay['clBrName'];
                     session_start();
 
                     header("location: ../barangay/barangayDashboard.php");

@@ -16,7 +16,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/output.css">
     <script defer src="../javascript/activePage.js"></script>
-    <title>Admin Barangays</title>
+    <title>[Admin] Barangays</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
     <div class="flex">
@@ -49,7 +49,9 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                     </thead>
                     <tbody>
                         <?php 
-                        $barangayListData = "SELECT * FROM tbbarangay ";
+                        $barangayListData = "SELECT br.clBrName, br.clBrID, br.clUrID, ur.clUrName
+                                            FROM pmms.tbbarangay AS br LEFT JOIN pmms.tbusers AS ur 
+                                            ON br.clUrID = ur.clUrID";
                         if(!$connectdb -> query($barangayListData)){
                             array_push($errors, "Errorcode:". $connectdb->errno);    
                         }
@@ -59,10 +61,10 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                                 echo'<tr>';
                                     echo'<td class="bg-white top-0 p-1">'.$row["clBrID"].'</td>';
                                     echo'<td class="bg-white top-0 p-1">'.$row["clBrName"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrID"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrID"].' - '.$row["clUrName"].'</td>';
                                     echo'<td class="bg-white top-0 p-2">';
                                     // Change location into the update page
-                                        echo '  <a href="updateBarangayPanelTemplate.php?clUrID='.$row["clUrID"].'">
+                                        echo '  <a href="updateBarangayPanelTemplate.php?clBrID='.$row["clBrID"].'">
                                                     <span id="editIcon" class="iconify" 
                                                         data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
                                                 </a>';

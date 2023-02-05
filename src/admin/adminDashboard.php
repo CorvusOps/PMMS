@@ -3,7 +3,7 @@ include '../includes/connectdb.php';
 
 // if the session id that is registered is not session id, then 
 // temporarily, return to index or maybe have an error 404
-if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
+if(!isset($_SESSION["admin_sid"]) && $_SESSION["admin_sid"] !== session_id()){
     header("location: ../../index.php");
     exit;
 }		

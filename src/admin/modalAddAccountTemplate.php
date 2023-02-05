@@ -8,7 +8,7 @@
 </head>
 <body>
 <body>
-        <form action="signup.php" method="post">
+        <form method="post">
             
             <br>
             <label for="clUrUsername">Username</label>

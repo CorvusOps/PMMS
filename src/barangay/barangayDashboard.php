@@ -8,7 +8,6 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +28,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
             <!--content/right side div-->
             <h1 id="barangayName" class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">
                  <!--must change depending on the name of the city in the database-->
-                Barangay Antipangol
+                Barangay <?php echo $_SESSION['Barangay'] ?>
             </h1>
             <div class="w-full flex gap-10 mt-5">
                 <!--information-->
