@@ -37,11 +37,19 @@ if(!isset($_SESSION["admin_sid"]) && $_SESSION["admin_sid"] !== session_id()){
                             <span class="iconify-inline" data-icon="fa-solid:user" style="color: #ffff;" data-width="25"></span>
                         </div>
                     </div>
+                        <!--Get number of registered accounts in the system-->
+                        <?php
+                            $result = mysqli_query($connectdb,"SELECT COUNT(*) FROM tbusers");
+                            $row = mysqli_fetch_array($result);
+
+                            $totalNumAcc = $row[0];
+						?>
+
                     <div class="grid grid-cols-1 text-orange-200 pr-32">
                         Accounts
                         <span id="userCount" class="text-2xl font-bold text-black">
-                            <!--must change depending on the number of users in the database-->
-                            50
+                            <!--display number of users in the database-->
+                            <?php echo $totalNumAcc; ?>
                         </span>
                     </div>
                 </div>
@@ -53,11 +61,20 @@ if(!isset($_SESSION["admin_sid"]) && $_SESSION["admin_sid"] !== session_id()){
                             <span class="iconify-inline" data-icon="mdi:home-city-outline" style="color: rgb(255, 255, 255);" data-width="30"></span>
                         </div>
                     </div>
+
+                    <!--Get number of registered barangays in the system-->
+                    <?php
+                            $result = mysqli_query($connectdb,"SELECT COUNT(*) FROM tbbarangay");
+                            $row = mysqli_fetch_array($result);
+
+                            $totalNumBrgy= $row[0];
+						?>
+
                     <div class="grid grid-cols-1 text-orange-200 pr-32">
                         Barangays
                         <span id="brgyCount" class="text-2xl font-bold text-black">
-                            <!--must change depending on the number of barangay in the database-->
-                            8
+                             <!--display number of barangays in the database-->
+                             <?php echo $totalNumBrgy; ?>
                         </span>
                     </div>
                 </div>
