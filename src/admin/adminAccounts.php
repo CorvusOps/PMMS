@@ -69,7 +69,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrContactNum"].'</td>';
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrEmail"].'</td>';
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrRole"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrclUrStatus"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrStatus"].'</td>';
                                     echo'<td class="bg-white top-0 p-2">';
                                     // Change location into the update page
                                     
