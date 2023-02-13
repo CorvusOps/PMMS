@@ -69,10 +69,11 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrContactNum"].'</td>';
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrEmail"].'</td>';
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrRole"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrStatus"].'</td>';
+                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrclUrStatus"].'</td>';
                                     echo'<td class="bg-white top-0 p-2">';
                                     // Change location into the update page
-                                        echo '  <a href="updateAccountPanelTemplate.php?clUrID='.$row["clUrID"].'">
+                                    
+                                        echo '  <div class="flex"> <a href="updateAccountPanelTemplate.php?clUrID='.$row["clUrID"].'">
                                                     <span id="editIcon" class="iconify" 
                                                         data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
                                                 </a>';
@@ -80,7 +81,8 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                                         echo '  <a href="../crud/tbusersDeleteAccount.php?clUrID='.$row["clUrID"].'"> 
                                                     <span id="deleteIcon" class="iconify" 
                                                         data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                                </a>';
+                                                </a>
+                                                </div>';
                                     echo'</td>';
                             }
                         }   
