@@ -19,6 +19,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     <title>Barangay Dashboard</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <?php include '../includes/header.php' ?> 
     <div class="flex">
         <!--full page div-->
         
@@ -65,6 +66,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
         <!--end of full page div-->
     </div>
     <script src="../javascript/submenu.js"></script>
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>

@@ -20,6 +20,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     <title>Unemployment</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <?php include '../includes/header.php' ?> 
     <div class="flex">
         <!--full page div-->
 
@@ -64,13 +65,19 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clUnID"].'</td>';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clUnYear"].'</td>';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clUnPercent"].'</td>';
-                                    echo'<td class="bg-white top-0 grid justify-center py-2">';
+                                    echo'<td class="bg-white top-0 grid justify-center py-5">';
                                     // Change location into the update page
-                                        echo '  <a href="updatebarangayFTRecords.php?clBrID='.$row["clUnID"].'">
-                                                    <span id="editIcon" class="iconify" 
+                                        echo '  <div class="flex">
+                                                    <a href="updatebarangayUNRecords.php?clUnID='.$row["clUnID"].'">
+                                                        <span id="editIcon" class="iconify" 
                                                         data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                                </a>';
-                                    echo'</td>';
+                                                    </a>';
+                                        echo '      <a href="../crud/tbunemploymentDeleteRecord.php?clUnID='.$row['clUnID'].'">
+                                                        <span id="deleteIcon" class="iconify" 
+                                                        data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                                                    </a>
+                                                </div>';
+                                    echo'</tr>';
                             }
                         }   
                     ?>
@@ -85,6 +92,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     </div>
 
     <script src="../javascript/submenu.js"></script>
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>

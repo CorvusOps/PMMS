@@ -21,6 +21,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
     <title>City Child Malnutrition</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <?php include '../includes/header.php' ?>
     <div class="flex">
         <!--full page div-->
         
@@ -52,37 +53,21 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                         </tr>
                     </thead>
                     <tbody>
-                        <!--when backend is integrated there should be multiple table data thru php-->
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                            <td class="py-5 px-5"></td>
-                        </tr>                        
+                    <?php 
+                          $FTdata = mysqli_query($connectdb,"SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, cm.clCmYear, cm.clBrID, br.clBrID, br.clBrName 
+                                                            FROM tbchildmalnutrition as cm LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID");
+                            while($row = $FTdata->fetch_assoc()) {
+                                echo' <tr class="border-b-2 border-orange-300 ">';
+                                echo'      <td class="text-center py-5 px-5">'.$row["clCmID"].'</td>';
+                                echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
+                                echo'      <td class="text-center py-5 px-5">'.$row["clCmMalType"].'</td>';
+                                echo'      <td class="text-center py-5 px-5">'.$row["clCmYear"].'</td>';
+                                echo'      <td class="text-center py-5 px-5">'.$row["clCmPercent"].'</td>';
+                                echo '</tr>';
+        
+                                }
+                            ?>
+                        
                     </tbody>
                 </table>
                 <!--end of table-->
@@ -91,6 +76,8 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
         </div>
         <!--end of full page div-->
     </div>
+
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>

@@ -9,13 +9,13 @@ if(isset($_GET["clFtID"]) && !empty($_GET["clFtID"])){
     if(mysqli_query($connectdb, $deletequery)){
         echo "<script> 
         alert('Record successfully deleted!'); 
-        window.location = '../city/cityFTRecords.php'; 
+        window.location = '../barangay/barangayFTRecords.php'; 
         </script>";  
     
     } else{
         echo "<script>
         alert('Failed to delete.');  
-        window.location = '../city/cityFTRecords.php';
+        window.location = '../barangay/barangayFTRecords.php';
         </script>";  
     }
 }

@@ -20,6 +20,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     <title>Income Threshold</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <?php include '../includes/header.php' ?> 
     <div class="flex">
         <!--full page div-->
 
@@ -37,7 +38,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
             
             <div class="w-full mt-4">
                 <!--table for users-->
-                <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
+                <table class="table-auto bg-white w-full text-[#623C04] text-tbIt text-sm">
                     <thead>
                         <tr class="border-b-2 border-gray-500">
                             <th class="py-2 px-8 text-center font-extralight">id</th>
@@ -64,12 +65,18 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["tbItID"].'</td>';
                                     echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["clITYear"].'</td>';
                                     echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["tbItPercent"].'</td>';
-                                    echo'<td class="bg-white top-0 grid justify-center pl-16 py-2">';
+                                    echo'<td class="bg-white top-0 grid justify-center pl-16 py-5">';
                                     // Change location into the update page
-                                        echo '  <a href="updatebarangayFTRecords.php?clBrID='.$row["tbItID"].'">
-                                                    <span id="editIcon" class="iconify" 
-                                                        data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                                </a>';
+                                        echo '  <div class="flex">
+                                                    <a href="updatebarangayITRecords.php?tbItID='.$row["tbItID"].'">
+                                                        <span id="editIcon" class="iconify" 
+                                                            data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
+                                                    </a>';
+                                        echo '      <a href="../crud/tbincomethresholdDeleteRecord.php?tbItID='.$row['tbItID'].'">
+                                                        <span id="deleteIcon" class="iconify" 
+                                                        data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                                                    </a>
+                                                </div>';
                                     echo'</td>';
                             }
                         }   
@@ -85,6 +92,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     </div>
 
     <script src="../javascript/submenu.js"></script>
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>

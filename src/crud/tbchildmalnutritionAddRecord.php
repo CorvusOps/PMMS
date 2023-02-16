@@ -13,10 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(mysqli_num_rows($CMresults)>0) {
         echo "<script>
         alert('Error: Record already exists');  
-        window.location = '../city/addCityFTRecordsTemplate.php';
+        window.location = '../barangay/addbarangayCMRecords.php';
         </script>"; 
     }else {
-        $FTquery = "INSERT INTO tbfoodthreshold(clCmMalType,clCmPercent,clCmYear,clBrID)
+        $FTquery = "INSERT INTO tbchildmalnutrition(clCmMalType,clCmPercent,clCmYear,clBrID)
         VALUES ('$clCmMalType','$clCmPercent','$clCmYear','$clBrID');";
         $result = mysqli_query($connectdb, $FTquery);
         //catch mysqli exception
@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //mysqli_free_result($result);
             echo "<script> 
             alert('Record is successfully added!'); 
-            window.location = '../barangay/barangayFTRecords.php'; 
+            window.location = '../barangay/barangayCMRecords.php'; 
             </script>";  
         } else {
             mysqli_close($connectdb);
             echo "<script>
             alert('Failed to add.');  
-            window.location = '../barangay/addbarangayFTRecordsTemplate.php';
+            window.location = '../barangay/addbarangayCMRecordsTemplate.php';
             </script>"; 
 
         }
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 else {
     echo "<script>
     alert('Failed to add.'); 
-    window.location = '../barangay/addbarangayFTRecordsTemplate.php';
+    window.location = '../barangay/addbarangayCMRecordsTemplate.php';
     </script>"; 
 }
 ?>

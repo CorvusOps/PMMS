@@ -21,6 +21,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
     <title>City Dashboard</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <?php include '../includes/header.php' ?>
     <div class="flex">
         <!--full page div-->
         
@@ -66,6 +67,8 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
         </div>
         <!--end of full page div-->
     </div>
+
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>

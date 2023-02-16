@@ -20,6 +20,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     <title>Food Threshold</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <?php include '../includes/header.php' ?> 
     <div class="flex">
         <!--full page div-->
 
@@ -62,14 +63,20 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                             while($row = $result->fetch_assoc()) {
                                 echo'<tr class="border-b-2 border-orange-300">';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clFtID"].'</td>';
-                                    echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["clFtYear"].'</td>';
-                                    echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["clFtPercent"].'</td>';
-                                    echo'<td class="bg-white top-0 pl-16 py-2 grid justify-center">';
+                                    echo'<td class="bg-white pl-8 text-center top-0 p-1">'.$row["clFtYear"].'</td>';
+                                    echo'<td class="bg-white pl-8 text-center top-0 p-1">'.$row["clFtPercent"].'</td>';
+                                    echo'<td class="bg-white top-0 pl-4 py-5 grid justify-center">';
                                     // Change location into the update page
-                                        echo '  <a href="updatebarangayFTRecords.php?clBrID='.$row["clFtID"].'">
-                                                    <span id="editIcon" class="iconify" 
+                                        echo '  <div class="flex">
+                                                    <a href="updatebarangayFTRecords.php?clFtID='.$row["clFtID"].'">
+                                                        <span id="editIcon" class="iconify" 
                                                         data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                                </a>';
+                                                    </a>';
+                                        echo '      <a href="../crud/tbfoodthresholdDeleteRecord.php?clFtID='.$row['clFtID'].'">
+                                                        <span id="deleteIcon" class="iconify" 
+                                                        data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                                                    </a>
+                                                </div>';
                                     echo'</td>';
                             }
                         }   
@@ -85,6 +92,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     </div>
 
     <script src="../javascript/submenu.js"></script>
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>

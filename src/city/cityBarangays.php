@@ -21,6 +21,8 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
     <title>City Barangays</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <?php include '../includes/header.php' ?>
+    
     <div class="flex">
         <!--full page div-->
         
@@ -60,9 +62,9 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()) {
                                 echo'<tr class="border-b-2 border-orange-300">';
-                                    echo'<td class="bg-white text-center top-0 p-2">'.$row["clBrID"].'</td>';
-                                    echo'<td class="bg-white text-center top-0 p-2">'.$row["clBrName"].'</td>';
-                                    echo'<td class="bg-white text-center top-0 p-2">'.$row["clUrID"].' - '.$row["clUrName"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 py-5 p-2">'.$row["clBrID"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 py-5 p-2">'.$row["clBrName"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 py-5 p-2">'.$row["clUrID"].' - '.$row["clUrName"].'</td>';
 
                             }
                         }   
@@ -82,6 +84,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
     <?php include '../modals/addBarangayModal.php' ?>
 
     <script src="../javascript/modal.js"></script>
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
