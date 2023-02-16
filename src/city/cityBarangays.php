@@ -43,9 +43,9 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                         <!--for the sake of showing, this is a temporary format-->
                         <!--the padding should be adjusted in actual code-->
                         <tr class="shadow-sm shadow-gray-500">
-                            <th class="py-2 pl-20 pr-5 text-left font-extralight">id</th>
-                            <th class="py-2 pl-20 pr-5 text-left font-extralight">Barangay Name</th>
-                            <th class="py-2 px-5 text-left font-extralight">Barangay Captain</th>
+                            <th class="py-2 pl-12 pr-5 text-center font-extralight">id</th>
+                            <th class="py-2 pl-12 pr-5 text-center font-extralight">Barangay Name</th>
+                            <th class="py-2 px-5 text-center font-extralight">Barangay Captain</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,9 +60,9 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()) {
                                 echo'<tr>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clBrID"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clBrName"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrID"].' - '.$row["clUrName"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-2">'.$row["clBrID"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-2">'.$row["clBrName"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-2">'.$row["clUrID"].' - '.$row["clUrName"].'</td>';
 
                             }
                         }   
