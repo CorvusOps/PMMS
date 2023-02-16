@@ -41,7 +41,8 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                 <!--table for records-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                    <?php 
-                          $ITdata = mysqli_query($connectdb,"SELECT * FROM tbincomethreshold");
+                          $ITdata = mysqli_query($connectdb,"SELECT it.tbItID, it.clBrID, it.clITYear, it.tbItPercent, br.clBrID, br.clBrName
+                          FROM tbincomethreshold as it LEFT JOIN tbbarangay as br ON it.clBrID = br.clBrID");
                     ?>
                     <thead>
                         <!--for the sake of showing, this is a temporary format-->
@@ -59,7 +60,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     while($row = $ITdata->fetch_assoc()) {
                       echo' <tr class="border-b-2 border-orange-300">';
                       echo'      <td class="text-center py-5 px-5">'.$row["tbItID"].'</td>';
-                      echo'      <td class="text-center py-5 px-5">'.$row["clBrID"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                       echo'      <td class="text-center py-5 px-5">'.$row["clITYear"].'</td>';
                       echo'      <td class="text-center py-5 px-5">'.$row["tbItPercent"].'</td>';
                       echo'      <td class=top-0 p-2">';

@@ -41,7 +41,8 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                 <!--table for records-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <?php 
-                          $FTdata = mysqli_query($connectdb,"SELECT * FROM tbfoodthreshold");
+                          $FTdata = mysqli_query($connectdb,"SELECT ft.clFtID, ft.clBrID, ft.clFtYear, ft.clFtPercent, br.clBrID, br.clBrName 
+                                                            FROM tbfoodthreshold as ft LEFT JOIN tbbarangay as br ON ft.clBrID = br.clBrID");
                     ?>
                     <thead>
                         <!--for the sake of showing, this is a temporary format-->
@@ -59,7 +60,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     while($row = $FTdata->fetch_assoc()) {
                       echo' <tr class="border-b-2 border-orange-300 ">';
                       echo'      <td class="text-center py-5 px-5">'.$row["clFtID"].'</td>';
-                      echo'      <td class="text-center py-5 px-5">'.$row["clBrID"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                       echo'      <td class="text-center py-5 px-5">'.$row["clFtYear"].'</td>';
                       echo'      <td class="text-center py-5 px-5">'.$row["clFtPercent"].'</td>';
                       echo'      <td class="top-0 p-2">';
