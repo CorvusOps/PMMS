@@ -19,6 +19,8 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
     <title>Add Accounts</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    
+    <?php include '../includes/header.php' ?>
     <div class="flex">
         <?php include '../includes/adminSidebar.php'; ?>
         
@@ -82,6 +84,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
     </div>
 
     <script src="../javascript/modal.js"></script>
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
