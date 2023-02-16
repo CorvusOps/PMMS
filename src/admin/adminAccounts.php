@@ -63,14 +63,14 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()) {
                                 echo'<tr>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrID"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrUsername"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrName"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrContactNum"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrEmail"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrRole"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clUrStatus"].'</td>';
-                                    echo'<td class="bg-white top-0 p-2">';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrID"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrUsername"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrName"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrContactNum"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrEmail"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrRole"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrStatus"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-2">';
                                     // Change location into the update page
                                     
                                         echo '  <div class="flex"> <a href="updateAccountPanelTemplate.php?clUrID='.$row["clUrID"].'">
