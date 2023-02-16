@@ -39,70 +39,42 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                 <!--table for users-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <thead>
-                        <tr class="shadow-sm shadow-gray-500">
-                            <th class="py-2 px-8 text-left font-extralight">id</th>
-                            <th class="py-2 px-5 text-left font-extralight">Year</th>
-                            <th class="py-2 px-5 text-left font-extralight">Percent</th>
+                        <tr class="border-b-2 border-gray-500">
+                            <th class="py-2 px-8 text-center font-extralight">id</th>
+                            <th class="py-2 px-5 text-center font-extralight">Year</th>
+                            <th class="py-2 px-5 text-center font-extralight">Percent</th>
                             <th class="py-2 px-5 text-center font-extralight">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!--when backend is integrated there should be multiple table data thru php-->
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayITRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayITRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayITRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayITRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayITRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>                      
+
+                    <?php 
+                        $brgyID = $_SESSION['BarangayID'];
+
+                        $incThreshListData = "SELECT tbItID, tbItPercent, clITYear, clBrID
+                        FROM tbincomethreshold WHERE clBrID = '$brgyID'";
+
+                        if(!$connectdb -> query($incThreshListData)){
+                            array_push($errors, "Errorcode:". $connectdb->errno);    
+                        }
+                        $result = $connectdb -> query($incThreshListData);
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()) {
+                                echo'<tr class="border-b-2 border-orange-300">';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["tbItID"].'</td>';
+                                    echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["clITYear"].'</td>';
+                                    echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["tbItPercent"].'</td>';
+                                    echo'<td class="bg-white top-0 grid justify-center pl-16 py-2">';
+                                    // Change location into the update page
+                                        echo '  <a href="updatebarangayFTRecords.php?clBrID='.$row["tbItID"].'">
+                                                    <span id="editIcon" class="iconify" 
+                                                        data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
+                                                </a>';
+                                    echo'</td>';
+                            }
+                        }   
+                    ?>
+                         
                     </tbody>
                 </table>
                 <!--end of table-->
@@ -111,6 +83,8 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
         </div>
         <!--end of full page div-->
     </div>
+
+    <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>

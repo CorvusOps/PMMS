@@ -45,8 +45,8 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                         Total Deprivation
                         <span class="text-orange-300 text-2xl">
                             Year 
-                            <!--must change depending on the system year-->
-                            <span id="yearNow">2022</span>
+                            <!--setting system year-->
+                            <span id="yearNow"><?php echo date("Y"); ?></span>
                         </span>
                     </div>
 

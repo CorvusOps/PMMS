@@ -3,9 +3,9 @@ include '../includes/connectdb.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $clFtPercent = $_POST["clFTPercent"];
+    $clFtPercent = $_POST["clFtPercent"];
     $clFtYear = $_POST["clFtYear"];
-    $clBrID =   $_SESSION['ID'];
+    $clBrID =   $_SESSION['BarangayID'];
     $FTQuery = "SELECT * FROM tbfoodthreshold WHERE clFtPercent = $clFtPercent AND clFtYear = $clFtYear;";
     $FTresults = mysqli_query($connectdb, $FTQuery);
 
@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //mysqli_free_result($result);
             echo "<script> 
             alert('Record is successfully added!'); 
-            window.location = '../city/cityFTRecords.php'; 
+            window.location = '../barangay/barangayFTRecords.php'; 
             </script>";  
         } else {
             mysqli_close($connectdb);
             echo "<script>
             alert('Failed to add.');  
-            window.location = '../city/addCityFTRecordsTemplate.php';
+            window.location = '../barangay/addbarangayFTRecordsTemplate.php';
             </script>"; 
 
         }
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 else {
     echo "<script>
     alert('Failed to add.'); 
-    window.location = '../city/addCityFTRecordsTemplate.php';
+    window.location = '../barangay/addbarangayFTRecordsTemplate.php';
     </script>"; 
 }
 ?>

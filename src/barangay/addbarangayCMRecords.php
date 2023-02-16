@@ -23,7 +23,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     
 <?php include '../includes/barangaySidebar.php' ?>
 
-    <div class="h-full ml-72 px-12 py-6 w-[450px]">
+    <div class="h-full px-12 py-6 w-full grid justify-center">
         <form action="#" method="post" class="bg-[#f4f4f4] px-16 py-12">
             <h1 class="text-2xl text-center font-semibold text-orange-200 mb-5">Add Child Malnutrition</h1>
 
@@ -35,7 +35,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
 
             <!--Fetch child malnutrition details in db and set as options-->
             <label for="clMalType" class="ml-4 text-gray-600">Malnutrition Type</label>
-            <select value="" name="clMalType" class="rounded-md p-2 pl-6 pr-4 mb-12 border border-solid border-gray-300 w-full focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+            <select value="" name="clMalType" class="rounded-md p-2 pl-6 pr-4 mb-8 border border-solid border-gray-300 w-full focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
                 <option value="0" selected>Stunted</option>
                 <option value="1">Wasted</option>
                 <option value="2">Underweight</option>
@@ -48,10 +48,18 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                     type="text" name="clCmPercent" placeholder="" required>
             </div>
 
-            <button type="submit" name="AddRecord" formaction="../crud/tbchildmalnutritionAddRecord.php" class="uppercase mx-28 border-gray-600 px-6 p-1 w-32 rounded-xl bg-orange-300 text-white shadow-sm hover:bg-yellow-800 hover:shadow-lg mb-5 cursor-pointer"> Add Record </button>
+            <button type="submit" name="AddRecord" formaction="../crud/tbchildmalnutritionAddRecord.php" 
+            class="uppercase mx-24 border-gray-600 px-6 p-2 w-36 rounded-xl bg-orange-300 text-white shadow-sm hover:bg-yellow-800 hover:shadow-lg mb-5 cursor-pointer"> Add Record </button>
         </form>
+
+        <br>
+        <a href="barangayCMRecords.php">
+                <p>Cancel</p>
+        </a>
     
     </div>
+    
+    <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>

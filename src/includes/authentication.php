@@ -65,6 +65,7 @@ if (isset($_POST['login'])){
                     $_SESSION['ID'] = $user['clUrID'];
                     $_SESSION['Username'] = $user['clUrUsername'];
                     $_SESSION['Name'] = $user['clUrName'];
+                    $_SESSION['BarangayID'] = $barangay['clBrID'];
                     $_SESSION['Barangay'] = $barangay['clBrName'];
                     session_start();
 

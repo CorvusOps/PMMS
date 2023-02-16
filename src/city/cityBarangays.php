@@ -42,7 +42,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     <thead>
                         <!--for the sake of showing, this is a temporary format-->
                         <!--the padding should be adjusted in actual code-->
-                        <tr class="shadow-sm shadow-gray-500">
+                        <tr class="border-b-2 border-gray-500">
                             <th class="py-2 pl-12 pr-5 text-center font-extralight">id</th>
                             <th class="py-2 pl-12 pr-5 text-center font-extralight">Barangay Name</th>
                             <th class="py-2 px-5 text-center font-extralight">Barangay Captain</th>
@@ -59,7 +59,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                         $result = $connectdb -> query($barangayListData);
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()) {
-                                echo'<tr>';
+                                echo'<tr class="border-b-2 border-orange-300">';
                                     echo'<td class="bg-white text-center top-0 p-2">'.$row["clBrID"].'</td>';
                                     echo'<td class="bg-white text-center top-0 p-2">'.$row["clBrName"].'</td>';
                                     echo'<td class="bg-white text-center top-0 p-2">'.$row["clUrID"].' - '.$row["clUrName"].'</td>';
