@@ -41,7 +41,8 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                 <!--table for records-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <?php 
-                          $UNdata = mysqli_query($connectdb,"SELECT * FROM tbunemployment");
+                          $UNdata = mysqli_query($connectdb,"SELECT un.clUnID, un.clBrID, un.clUnYear, un.clUnPercent, br.clBrID, br.clBrName
+                                                            FROM tbunemployment as un LEFT JOIN tbbarangay as br ON un.clBrID = br.clBrID");
                     ?>
                     <thead>
                         <!--for the sake of showing, this is a temporary format-->
@@ -59,7 +60,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     while($row = $UNdata->fetch_assoc()) {
                       echo' <tr class="border-b-2 border-orange-300">';
                       echo'      <td class="text-center py-5 px-5">'.$row["clUnID"].'</td>';
-                      echo'      <td class="text-center py-5 px-5">'.$row["clBrID"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                       echo'      <td class="text-center py-5 px-5">'.$row["clUnYear"].'</td>';
                       echo'      <td class="text-center py-5 px-5">'.$row["clUnPercent"].'</td>';
                       echo'      <td class="top-0 p-2">';
