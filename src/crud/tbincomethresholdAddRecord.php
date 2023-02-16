@@ -3,9 +3,9 @@ include '../includes/connectdb.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $tbItPercent = $_POST["tbItPercent"];
-    $clITYear = $_POST["clITYear"];
-    $clBrID =   $_SESSION['ID'];
+    $tbItPercent = $_POST["clItPercent"];
+    $clITYear = $_POST["clItYear"];
+    $clBrID =   $_SESSION['BarangayID'];
     $ITQuery = "SELECT * FROM tbincomethreshold WHERE tbItPercent = $tbItPercent AND clITYear = $clITYear;";
     $ITresults = mysqli_query($connectdb, $ITQuery);
 
@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //mysqli_free_result($result);
             echo "<script> 
             alert('Record is successfully added!'); 
-            window.location = '../city/cityITRecords.php'; 
+            window.location = '../barangay/barangayITRecords.php'; 
             </script>";  
         }else{
             mysqli_close($connectdb);
             echo "<script>
             alert('Failed to add.');  
-            window.location = '../city/addCityITRecordsTemplate.php';
+            window.location = '../barangay/addbarangayITRecordsTemplate.php';
             </script>"; 
         }
     }
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 else{
     echo "<script>
     alert('Failed to add.'); 
-    window.location = '../city/addCityITRecordsTemplate.php';
+    window.location = '../barangay/addBarangayITRecordsTemplate.php';
     </script>"; 
 }
 

@@ -47,62 +47,34 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                         </tr>
                     </thead>
                     <tbody>
-                        <!--when backend is integrated there should be multiple table data thru php-->
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayFTRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayFTRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayFTRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayFTRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayFTRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>                      
+
+                    <?php 
+                        $brgyID = $_SESSION['BarangayID'];
+
+                        $foodThreshListData = "SELECT clFtID, clFtPercent, clFtYear, clBrID
+                        FROM tbfoodthreshold WHERE clBrID = '$brgyID'";
+
+                        if(!$connectdb -> query($foodThreshListData)){
+                            array_push($errors, "Errorcode:". $connectdb->errno);    
+                        }
+                        $result = $connectdb -> query($foodThreshListData);
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()) {
+                                echo'<tr>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clFtID"].'</td>';
+                                    echo'<td class="bg-white pl-16 top-0 p-1">'.$row["clFtYear"].'</td>';
+                                    echo'<td class="bg-white pl-16 top-0 p-1">'.$row["clFtPercent"].'</td>';
+                                    echo'<td class="bg-white top-0 pl-16 py-2">';
+                                    // Change location into the update page
+                                        echo '  <a href="updatebarangayFTRecords.php?clBrID='.$row["clFtID"].'">
+                                                    <span id="editIcon" class="iconify" 
+                                                        data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
+                                                </a>';
+                                    echo'</td>';
+                            }
+                        }   
+                    
+                    ?>
                     </tbody>
                 </table>
                 <!--end of table-->
