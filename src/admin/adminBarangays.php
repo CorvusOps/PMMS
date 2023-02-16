@@ -42,7 +42,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                         <!--the padding should be adjusted in actual code-->
                         <tr class="shadow-sm shadow-gray-500">
                             <th class="py-2 pl-20 pr-5 text-left font-extralight">id</th>
-                            <th class="py-2 pl-20 pr-5 text-left font-extralight">Barangay Name</th>
+                            <th class="py-2 pl-16 pr-5 text-left font-extralight">Barangay Name</th>
                             <th class="py-2 px-5 text-left font-extralight">Barangay Captain</th>
                             <th class="py-2 px-5 text-center font-extralight">Actions</th>
                         </tr>
@@ -59,10 +59,10 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()) {
                                 echo'<tr>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clBrID"].'</td>';
-                                    echo'<td class="bg-white top-0 p-1">'.$row["clBrName"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clBrID"].'</td>';
+                                    echo'<td class="bg-white pl-16 top-0 p-1">'.$row["clBrName"].'</td>';
                                     echo'<td class="bg-white top-0 p-1">'.$row["clUrID"].' - '.$row["clUrName"].'</td>';
-                                    echo'<td class="bg-white top-0 p-2">';
+                                    echo'<td class="bg-white top-0 pl-16 py-2">';
                                     // Change location into the update page
                                         echo '  <a href="updateBarangayPanelTemplate.php?clBrID='.$row["clBrID"].'">
                                                     <span id="editIcon" class="iconify" 

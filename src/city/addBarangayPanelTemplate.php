@@ -1,9 +1,11 @@
 <?php
 include '../includes/connectdb.php';
 
+$username = $_SESSION["Username"];
+
 // if the session id that is registered is not session id, then 
 // temporarily, return to index or maybe have an error 404
-if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
+if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){	
     header("location: ../../index.php");
     exit;
 }		
@@ -20,7 +22,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
     <div class="flex">
-        <?php include '../includes/adminSidebar.php'; ?>
+        <?php include '../includes/citySidebar.php'; ?>
         
         <div class="h-full ml-72 px-12 py-6 w-full grid justify-center">
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Add Barangay</h1>
@@ -61,7 +63,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
             <!--
                 <p>Already have an account?</p>
             -->
-                <a href="adminBarangays.php">
+                <a href="cityBarangays.php">
                 <p>Cancel</p>
 
             </a>

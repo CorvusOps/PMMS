@@ -6,7 +6,6 @@ if(isset($_GET["tbItID"]) && !empty($_GET["tbItID"])){
     $clITYear = $_POST['clITYear'];
     $tbItPercent = $_POST['tbItPercent'];
     $updatequery = "UPDATE tbincomethreshold SET tbItPercent = '$tbItPercent', clITYear = '$clITYear' WHERE tbItID ='$tbItID';";
-   
     
     if(mysqli_query($connectdb, $updatequery)){
         echo "<script> 

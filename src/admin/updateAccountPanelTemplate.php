@@ -23,73 +23,101 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../../public/output.css">
+    <script defer src="../javascript/activePage.js"></script>
+    <title>Update Account</title>
 </head>
-<body>
-<body>
-    <?php
-      $userQuery = mysqli_query($connectdb, "SELECT * FROM tbusers WHERE clUrID ='$clUrID'");
-      $row = $userQuery->fetch_assoc();      
+<body class="bg-[#FFF0B9] font-Poppins">
+    <div class="flex">
+        <?php include '../includes/adminSidebar.php'; ?>
+        
+        <div class="h-full ml-72 px-12 py-6 w-full grid justify-center">
+            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Update Account</h1>
+            <?php
+            $userQuery = mysqli_query($connectdb, "SELECT * FROM tbusers WHERE clUrID ='$clUrID'");
+            $row = $userQuery->fetch_assoc();      
 
-    //   while($row = mysqli_fetch_array($userQuery)){
-    //     $clUrID =  $row['clUrID'];
-    //     $clUrUsername = $row['clUrUsername'];
-    //     $clUrPassword = $row['clUrPassword'];
-    //     $clUrName = $row['clUrName'];
-    //     $clUrContactNum = $row['clUrContactNum'];
-    //     $clUrEmail = $row['clUrEmail'];
-    //     $clUrLevel = $row['clUrLevel'];
-    //     }
-    ?>
+            //   while($row = mysqli_fetch_array($userQuery)){
+            //     $clUrID =  $row['clUrID'];
+            //     $clUrUsername = $row['clUrUsername'];
+            //     $clUrPassword = $row['clUrPassword'];
+            //     $clUrName = $row['clUrName'];
+            //     $clUrContactNum = $row['clUrContactNum'];
+            //     $clUrEmail = $row['clUrEmail'];
+            //     $clUrLevel = $row['clUrLevel'];
+            //     }
+            ?>
 
-        <form action="../crud/tbusersEditAccount.php"  method="post">
+            <form action="../crud/tbusersEditAccount.php" method="post">
 
-            <br>
-            <label for="clUrUsername">Username</label>
-            <input type="text" value="<?php echo $row['clUrUsername']; ?>" name="clUrUsername" placeholder=" Username ">
-            
-            <br>
-            <label for="clUrPassword">Password</label>
-            <input type="password" name="clUrPassword" placeholder=" Re-type your Password ">
-            
-            <br>
-            <label for="clUrName">Name</label>
-            <input type="text" value="<?php echo $row['clUrName']; ?>" name="clUrName" placeholder=" Name ">
-            
-            <br>
-            <label for="clUrContactNum">Contact Number</label>
-            <input type="text" value="<?php echo $row['clUrContactNum']; ?>" name="clUrContactNum" placeholder=" Contact Number ">
-            
-            <label for="clUrEmail">Email</label>
-            <input type="text" value="<?php echo $row['clUrEmail']; ?>" name="clUrEmail" placeholder=" Email ">
-            
-            <!-- WHY I DIDNT START AT 0
-               - 1. ENUM in mysql starts at 1, so when indexing in enum
-               -   we can use these values to select, insert, update functions in mysql
-            --->
-            <br>
-            <label for="clUrLevel">User Level</label>
-            <select value="<?php echo $row['clUrLevel']; ?>" name="clUrLevel">
-                <option value="1">CM - City Mayor</option>
-                <option value="2">MS - Municipal Staff</option>
-                <option value="3" selected>BC - Barangay Captian</option>
-            </select>
+                <br>
+                <label for="clUrUsername">Username</label>
+                <br>
+                <input type="text" value="<?php echo $row['clUrUsername']; ?>" name="clUrUsername" placeholder="Username"
+                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                
+                <br>
+                <label for="clUrPassword">Password</label>
+                <br>
+                <input type="password" name="clUrPassword" placeholder="Re-type your Password"
+                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                
+                <br>
+                <label for="clUrName">Name</label>
+                <br>
+                <input type="text" value="<?php echo $row['clUrName']; ?>" name="clUrName" placeholder="Name"
+                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                
+                <br>
+                <label for="clUrContactNum">Contact Number</label>
+                <br>
+                <input type="text" value="<?php echo $row['clUrContactNum']; ?>" name="clUrContactNum" placeholder="Contact Number"
+                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                
+                <br>
+                <label for="clUrEmail">Email</label>
+                <br>
+                <input type="text" value="<?php echo $row['clUrEmail']; ?>" name="clUrEmail" placeholder="Email "
+                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                
+                <!-- WHY I DIDNT START AT 0
+                - 1. ENUM in mysql starts at 1, so when indexing in enum
+                -   we can use these values to select, insert, update functions in mysql
+                --->
+                <br>
+                <label for="clUrLevel">User Level</label>
+                <br>
+                <select value="<?php echo $row['clUrLevel']; ?>" name="clUrLevel"
+                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                    <option value="1">CM - City Mayor</option>
+                    <option value="2">MS - Municipal Staff</option>
+                    <option value="3" selected>BC - Barangay Captian</option>
+                </select>
 
-            <input type="hidden" name="clUrID" value=" <?php echo $row['clUrID'] ;?> "  id="clUrID"/>
+                <input type="hidden" name="clUrID" value=" <?php echo $row['clUrID'] ;?> "  id="clUrID"/>
 
-            <br>
-            <button type="submit" name="addUserBtn" formaction="../crud/tbusersEditAccount.php"> Update Account </button>
-            <button type="reset"> Clear </button>
-        </form>
+                <br>
+                <button type="submit" name="addUserBtn" formaction="../crud/tbusersEditAccount.php"
+                class="mt-4 uppercase border-gray-600 px-6 py-2 p-1 w-48 rounded-xl bg-white text-gray-800 hover:text-white shadow-sm hover:bg-slate-700 hover:shadow-lg mb-5 cursor-pointer"> Update Account </button>
+                
+                <button type="reset"
+                class="uppercase border-gray-600 px-6 py-2 p-1 w-48 rounded-xl bg-red-500 text-white shadow-sm hover:bg-red-900 hover:shadow-lg mb-5 cursor-pointer"> Clear </button>
+            </form>
 
 
-        <!--
-            <p>Already have an account?</p>
-        -->
-            <a href="adminAccounts.php">
-            <p>Cancel</p>
+            <!--
+                <p>Already have an account?</p>
+            -->
+                <a href="adminAccounts.php">
+                <p>Cancel</p>
 
-        </a>
-    </body>
+            </a>
+        </div>
+    </div>
+
+    <script src="../javascript/modal.js"></script>
+    <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

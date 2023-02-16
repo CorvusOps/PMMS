@@ -3,10 +3,8 @@ include '../includes/connectdb.php';
 
 if(isset($_GET["clFtID"]) && !empty($_GET["clFtID"])){
     $clFtID = $_GET['clFtID'];
-    #idk but trigger modal to 
 
     $deletequery = "DELETE FROM tbfoodthreshold WHERE clFtID ='$clFtID';";
-
     
     if(mysqli_query($connectdb, $deletequery)){
         echo "<script> 
@@ -20,7 +18,6 @@ if(isset($_GET["clFtID"]) && !empty($_GET["clFtID"])){
         window.location = '../city/cityFTRecords.php';
         </script>";  
     }
-
 }
 
 ?>

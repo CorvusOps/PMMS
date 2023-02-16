@@ -18,24 +18,23 @@ if(mysqli_num_rows($UNresults)>0){
     $UNquery = "INSERT INTO tbunemployment(clUnPercent,clUnYear,clBrID)
     VALUES ('$clUnPercent','$clUnYear','$clBrID');";
     $result = mysqli_query($connectdb, $UNquery);
-    //catch mysqli exception
-    if($result){
-    //mysqli_free_result($result);
-    echo "<script> 
-    alert('Record is successfully added!'); 
-    window.location = '../city/cityUNRecords.php'; 
-    </script>";  
-    }else{
-    mysqli_close($connectdb);
-    echo "<script>
-    alert('Failed to add.');  
-    window.location = '../city/addCityUNRecordsTemplate.php';
-    </script>"; 
-
-}
-
-}
-
+    
+        //catch mysqli exception
+        if($result){
+            //mysqli_free_result($result);
+            echo "<script> 
+            alert('Record is successfully added!'); 
+            window.location = '../city/cityUNRecords.php'; 
+            </script>";  
+            
+        }else {
+            mysqli_close($connectdb);
+            echo "<script>
+            alert('Failed to add.');  
+            window.location = '../city/addCityUNRecordsTemplate.php';
+            </script>"; 
+        }
+    }
 }
 else{
     echo "<script>
@@ -43,7 +42,5 @@ else{
     window.location = '../city/addCityUNRecordsTemplate.php';
     </script>"; 
 }
-
-
 
 ?>

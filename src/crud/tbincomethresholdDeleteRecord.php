@@ -3,11 +3,10 @@ include '../includes/connectdb.php';
 
 if(isset($_GET["tbItID"]) && !empty($_GET["tbItID"])){
     $tbItID = $_GET['tbItID'];
-    #idk but trigger modal to 
-
+    
+    #query to delete
     $deletequery = "DELETE FROM tbincomethreshold WHERE tbItID ='$tbItID';";
 
-    
     if(mysqli_query($connectdb, $deletequery)){
         echo "<script> 
         alert('Record successfully deleted!'); 
