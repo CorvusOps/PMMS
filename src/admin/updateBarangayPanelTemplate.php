@@ -28,6 +28,11 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
     <title>Update Barangay</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <div class="relative">
+    <?php include '../includes/header.php' ?>
+    </div>
+ 
+
     <div class="flex">
         <?php include '../includes/adminSidebar.php'; ?>
         

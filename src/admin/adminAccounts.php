@@ -19,6 +19,9 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
     <title>Admin Accounts</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+
+    <?php include '../includes/header.php' ?>
+
     <div class="flex">
         <!--full page div-->
 
