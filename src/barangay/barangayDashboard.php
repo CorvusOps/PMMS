@@ -43,8 +43,8 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                         Total Deprivation
                         <span class="text-orange-300 text-2xl">
                             Year 
-                            <!--must change depending on the system year-->
-                            <span id="yearNow">2022</span>
+                            <!--setting system year-->
+                            <span id="yearNow"><?php echo date("Y"); ?></span>
                         </span>
                     </div>
 

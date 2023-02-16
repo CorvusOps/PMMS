@@ -58,25 +58,30 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     <?php    
                     while($row = $FTdata->fetch_assoc()) {
                       echo' <tr class="border-b-2 border-orange-300 ">';
-                      echo'      <td class="py-5 px-5">'.$row["clFtID"].'</td>';
-                      echo'      <td class="py-5 px-5">'.$row["clBrID"].'</td>';
-                      echo'      <td class="py-5 px-5">'.$row["clFtYear"].'</td>';
-                      echo'      <td class="py-5 px-5">'.$row["clFtPercent"].'</td>';
-                      echo'<td class="bg-white top-0 p-2 inline-block">';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clFtID"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clBrID"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clFtYear"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clFtPercent"].'</td>';
+                      echo'      <td class="top-0 p-2">';
                       // Change location into the update page
-                          echo '<a href="updateCityFTRecordsTemplate.php?clFtID='.$row['clFtID'].'">
+                        echo '<div class="flex">
+                                <a href="updateCityFTRecordsTemplate.php?clFtID='.$row['clFtID'].'">
                                     <span id="editIcon" class="iconify" 
-                                     data-icon="bxs:edit" style="color: #77c9e3;" data-width="25">
-                                    </span></a>';
+                                    data-icon="bxs:edit" style="color: #77c9e3;" data-width="25">
+                                    </span>
+                                </a>';
                       // Change location into the delete page
-                          echo '  <a href="../crud/tbfoodthresholdDeleteRecord.php?clFtID='.$row['clFtID'].'">
+                          echo ' <a href="../crud/tbfoodthresholdDeleteRecord.php?clFtID='.$row['clFtID'].'">
                                       <span id="deleteIcon" class="iconify" 
                                           data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                  </a>';
-                      echo'</td>';
-                      echo'  </tr>';
+                                  </a>
+                                </div>';
+                        echo'</td>';
+                      echo'</tr>';
+
                         }
                     ?>
+                    
                     </tbody>
                 </table>
                 <!--end of table-->

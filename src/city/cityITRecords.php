@@ -58,23 +58,26 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                         <?php    
                     while($row = $ITdata->fetch_assoc()) {
                       echo' <tr class="border-b-2 border-orange-300">';
-                      echo'      <td class="py-5 px-5">'.$row["tbItID"].'</td>';
-                      echo'      <td class="py-5 px-5">'.$row["clBrID"].'</td>';
-                      echo'      <td class="py-5 px-5">'.$row["clITYear"].'</td>';
-                      echo'      <td class="py-5 px-5">'.$row["tbItPercent"].'</td>';
-                      echo'<td class="bg-white top-0 p-2">';
+                      echo'      <td class="text-center py-5 px-5">'.$row["tbItID"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clBrID"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["clITYear"].'</td>';
+                      echo'      <td class="text-center py-5 px-5">'.$row["tbItPercent"].'</td>';
+                      echo'      <td class=top-0 p-2">';
                       // Change location into the update page
-                      echo '<a href="updateCityITRecordsTemplate.php?tbItID='.$row['tbItID'].'">
-                            <span id="editIcon" class="iconify" 
-                            data-icon="bxs:edit" style="color: #77c9e3;" data-width="25">
-                             </span></a>';
-                      // Change location into the delete page
-                      echo ' <a href="../crud/tbincomethresholdDeleteRecord.php?tbItID='.$row['tbItID'].'">
-                         <span id="deleteIcon" class="iconify" 
-                              data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                         </a>';
-                      echo'</td>';
-                      echo'  </tr>';
+                            echo '<div class="flex">
+                                        <a href="updateCityITRecordsTemplate.php?tbItID='.$row['tbItID'].'">
+                                            <span id="editIcon" class="iconify" 
+                                            data-icon="bxs:edit" style="color: #77c9e3;" data-width="25">
+                                            </span>
+                                        </a>';
+                            // Change location into the delete page
+                                echo ' <a href="../crud/tbincomethresholdDeleteRecord.php?tbItID='.$row['tbItID'].'">
+                                            <span id="deleteIcon" class="iconify" 
+                                            data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                                        </a>
+                                    </div>';
+                            echo'</td>';
+                      echo'</tr>';
                         }
                     ?>    
                     </tbody>

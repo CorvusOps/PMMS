@@ -39,10 +39,10 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                 <!--table for users-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <thead>
-                        <tr class="shadow-sm shadow-gray-500">
-                            <th class="py-2 px-8 text-left font-extralight">id</th>
-                            <th class="py-2 px-5 text-left font-extralight">Year</th>
-                            <th class="py-2 px-5 text-left font-extralight">Percent</th>
+                        <tr class="border-b-2 border-gray-500">
+                            <th class="py-2 px-8 text-center font-extralight">id</th>
+                            <th class="py-2 px-5 text-center font-extralight">Year</th>
+                            <th class="py-2 px-5 text-center font-extralight">Percent</th>
                             <th class="py-2 px-5 text-center font-extralight">Actions</th>
                         </tr>
                     </thead>
@@ -60,11 +60,11 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                         $result = $connectdb -> query($foodThreshListData);
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()) {
-                                echo'<tr>';
+                                echo'<tr class="border-b-2 border-orange-300">';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clFtID"].'</td>';
-                                    echo'<td class="bg-white pl-16 top-0 p-1">'.$row["clFtYear"].'</td>';
-                                    echo'<td class="bg-white pl-16 top-0 p-1">'.$row["clFtPercent"].'</td>';
-                                    echo'<td class="bg-white top-0 pl-16 py-2">';
+                                    echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["clFtYear"].'</td>';
+                                    echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["clFtPercent"].'</td>';
+                                    echo'<td class="bg-white top-0 pl-16 py-2 grid justify-center">';
                                     // Change location into the update page
                                         echo '  <a href="updatebarangayFTRecords.php?clBrID='.$row["clFtID"].'">
                                                     <span id="editIcon" class="iconify" 
@@ -83,6 +83,8 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
         </div>
         <!--end of full page div-->
     </div>
+
+    <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>

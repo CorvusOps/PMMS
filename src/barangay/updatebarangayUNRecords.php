@@ -42,6 +42,8 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
         </form>
 
     </div>
+
+    <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>
