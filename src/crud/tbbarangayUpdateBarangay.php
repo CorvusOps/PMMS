@@ -36,16 +36,16 @@ if(isset($_POST['updateBrgyBtn'])){
         //catch mysqli exception
         if(mysqli_query($connectdb,$barangayquery)){
         //mysqli_free_result($result);
-        echo "<script> 
-        alert('Account is successfully updated!'); 
-        window.location = '../admin/adminAccounts.php'; 
-        </script>";  
+          echo "<script> 
+          alert('Barangay is successfully updated!'); 
+          window.location = '../admin/adminBarangays.php'; 
+          </script>";  
         }else{
-        mysqli_close($connectdb);
-        echo "<script>
-        alert('Failed to update.');  
-        window.location = '../admin/adminAccounts.php';
-        </script>"; 
+          mysqli_close($connectdb);
+          echo "<script>
+          alert('Failed to update.');  
+          window.location = '../admin/adminBarangays.php';
+          </script>"; 
     }
    } 
   }
