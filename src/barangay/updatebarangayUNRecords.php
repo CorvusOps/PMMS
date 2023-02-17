@@ -35,7 +35,7 @@ if(isset($_GET["clUnID"]) && !empty($_GET["clUnID"])){
         <?php include '../includes/barangaySidebar.php'; ?>
         
         <div class="h-full ml-72 px-12 py-6 w-full grid justify-center">
-            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Update Income Threshold</h1>
+            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Update Unemployment</h1>
             
             <form method="POST">
                 <!--Not sure if barangay id or barangay -->

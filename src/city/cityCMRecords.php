@@ -30,15 +30,16 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
         <div class="h-full ml-72 px-12 py-6 w-full">
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Child Malnutrition Records</h1>
-            <form action="" method="GET" id="search-bar" class="w-full flex justify-end">
-                <input type="text" name="query" placeholder="Search Record" value="" class="text-sm focus:outline-none focus:ring-1 focus:ring-orange-300 px-2" required>
-                <button class="flex items-center gap-2 bg-orange-300 py-[5px] px-4 text-white"> 
-                    <span class="iconify" data-icon="akar-icons:search" data-width="20"></span>
-                    Search
-                </button>
-            </form>
+                            
+            <?php include '../includes/searchbar.php' ?>
             
-            <div class="w-full mt-4">
+                <div class="w-full flex justify-end text-sm mt-4">
+                    <a href="cityCMRecords.php">
+                        Clear Search
+                    </a>
+                </div>
+            
+            <div class="w-full mt-2">
                 <!--table for records-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <thead>
@@ -56,17 +57,30 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     <?php 
                           $FTdata = mysqli_query($connectdb,"SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, cm.clCmYear, cm.clBrID, br.clBrID, br.clBrName 
                                                             FROM tbchildmalnutrition as cm LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID");
-                            while($row = $FTdata->fetch_assoc()) {
+                            if(isset($_GET['search'])){ //checks if the input text is not null
+                                $filtervalues = $_GET['search'];
+                                $FTdata = mysqli_query($connectdb,"SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, cm.clCmYear, cm.clBrID, br.clBrID, br.clBrName 
+                                FROM tbchildmalnutrition as cm LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID WHERE br.clBrName LIKE '%$filtervalues%' OR (cm.clCmYear = '$filtervalues')");
+                              }
+
+                            if($FTdata->num_rows > 0){
+                                while($row = $FTdata->fetch_assoc()) {
+                                    echo' <tr class="border-b-2 border-orange-300 ">';
+                                    echo'      <td class="text-center py-5 px-5">'.$row["clCmID"].'</td>';
+                                    echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
+                                    echo'      <td class="text-center py-5 px-5">'.$row["clCmYear"].'</td>';
+                                    echo'      <td class="text-center py-5 px-5">'.$row["clCmMalType"].'</td>';
+                                    echo'      <td class="text-center py-5 px-5">'.$row["clCmPercent"].'</td>';
+                                    echo '</tr>';
+                                    }
+                            } else {
+                                //If no matching data found, return message that there's no record
                                 echo' <tr class="border-b-2 border-orange-300 ">';
-                                echo'      <td class="text-center py-5 px-5">'.$row["clCmID"].'</td>';
-                                echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
-                                echo'      <td class="text-center py-5 px-5">'.$row["clCmMalType"].'</td>';
-                                echo'      <td class="text-center py-5 px-5">'.$row["clCmYear"].'</td>';
-                                echo'      <td class="text-center py-5 px-5">'.$row["clCmPercent"].'</td>';
+                                echo'      <td colspan="5" class="text-center py-5 px-5">No Record Found.</td>';
                                 echo '</tr>';
-        
-                                }
-                            ?>
+                            }
+                            
+                        ?>
                         
                     </tbody>
                 </table>
