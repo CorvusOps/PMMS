@@ -1,6 +1,13 @@
 <?php
 include '../includes/connectdb.php';
 
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
+    header("location: ../../index.php");
+    exit;
+}
+
 if(isset($_GET["clCmID"]) && !empty($_GET["clCmID"])){
     $clCmID = $_GET['clCmID'];
 
@@ -35,12 +42,16 @@ if(isset($_GET["clCmID"]) && !empty($_GET["clCmID"])){
 
                 echo'<br>';
                 echo'<label for="clCmMalType">Malnutrition Type</label> <br>';
-                
+            
                 // WARN! To be updated to retrieve enum values and put to selection
-                echo'<input type="text" name="clCmMalType" 
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                value="'.$row['clCmMalType'].'">';
-
+                echo'<select value="'.$row['clCmMalType'].'"  name="clCmMalType" autofocus
+                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">';
+                echo'
+                    <option value="1">wasted</option>
+                    <option value="2">Stunned</option>
+                    <option value="3">Overweight</option>
+                    <option value="4">Underweight</option>';
+                echo'</select>';
                 echo'<br>';
                 echo'<label for="clCmPercent">Child Malnutrition Percentage</label> <br>';
                 echo'<input type="text" name="clCmPercent" 

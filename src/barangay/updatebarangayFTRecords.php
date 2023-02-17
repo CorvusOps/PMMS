@@ -1,6 +1,13 @@
 <?php
 include '../includes/connectdb.php';
 
+// if the session id that is registered is not session id, then 
+// temporarily, return to index or maybe have an error 404
+if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
+    header("location: ../../index.php");
+    exit;
+}
+
 if(isset($_GET["clFtID"]) && !empty($_GET["clFtID"])){
     $clFtID = $_GET['clFtID'];
 
