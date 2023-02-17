@@ -10,13 +10,13 @@ if(isset($_GET["clUnID"]) && !empty($_GET["clUnID"])){
     if(mysqli_query($connectdb, $deletequery)){
         echo "<script> 
         alert('Record successfully deleted!'); 
-        window.location = '../city/cityUNRecords.php'; 
+        window.location = '../barangay/barangayUNRecords.php'; 
         </script>";  
     
     } else{
         echo "<script>
         alert('Failed to delete.');  
-        window.location = '../city/cityUNRecords.php';
+        window.location = '../barangay/barangayUNRecords.php';
         </script>";  
     }
 

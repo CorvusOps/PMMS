@@ -21,6 +21,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
     <title>City Income Threshold</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+    <?php include '../includes/header.php' ?>
     <div class="flex">
         <!--full page div-->
         
@@ -63,22 +64,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                       echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                       echo'      <td class="text-center py-5 px-5">'.$row["clITYear"].'</td>';
                       echo'      <td class="text-center py-5 px-5">'.$row["tbItPercent"].'</td>';
-                      echo'      <td class=top-0 p-2">';
-                      // Change location into the update page
-                            echo '<div class="flex">
-                                        <a href="updateCityITRecordsTemplate.php?tbItID='.$row['tbItID'].'">
-                                            <span id="editIcon" class="iconify" 
-                                            data-icon="bxs:edit" style="color: #77c9e3;" data-width="25">
-                                            </span>
-                                        </a>';
-                            // Change location into the delete page
-                                echo ' <a href="../crud/tbincomethresholdDeleteRecord.php?tbItID='.$row['tbItID'].'">
-                                            <span id="deleteIcon" class="iconify" 
-                                            data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
-                                        </a>
-                                    </div>';
-                            echo'</td>';
-                      echo'</tr>';
+                      echo'  </tr>';
                         }
                     ?>    
                     </tbody>
@@ -89,6 +75,8 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
         </div>
         <!--end of full page div-->
     </div>
+
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>

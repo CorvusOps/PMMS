@@ -10,13 +10,13 @@ if(isset($_GET["clUnID"]) && !empty($_GET["clUnID"])){
     if(mysqli_query($connectdb, $updatequery)){
         echo "<script> 
         alert('Record successfully updated!'); 
-        window.location = '../city/cityUNRecords.php'; 
+        window.location = '../barangay/barangayUNRecords.php'; 
         </script>";  
     
     } else{
         echo "<script>
         alert('Failed to update.');  
-        window.location = '../city/cityUNRecords.php';
+        window.location = '../barangay/barangayUNRecords.php';
         </script>";  
     }
 

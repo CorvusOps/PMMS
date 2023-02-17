@@ -20,6 +20,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     <title>Child Malnutrition</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
+<?php include '../includes/header.php' ?> 
     <div class="flex">
         <!--full page div-->
 
@@ -39,76 +40,51 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                 <!--table for users-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <thead>
-                        <tr class="shadow-sm shadow-gray-500">
-                            <th class="py-2 px-8 text-left font-extralight">id</th>
-                            <th class="py-2 px-5 text-left font-extralight">Year</th>
-                            <th class="py-2 px-5 text-left font-extralight">Mal Type</th>
-                            <th class="py-2 px-5 text-left font-extralight">Percent</th>
+                        <tr class="border-b-2 border-gray-300">
+                            <th class="py-2 px-8 text-center font-extralight">id</th>
+                            <th class="py-2 px-5 text-center font-extralight">Year</th>
+                            <th class="py-2 px-5 text-center font-extralight">Mal Type</th>
+                            <th class="py-2 px-5 text-center font-extralight">Percent</th>
                             <th class="py-2 px-5 text-center font-extralight">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!--when backend is integrated there should be multiple table data thru php-->
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icon-->
-                                <a href="updatebarangayCMRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icons-->
-                                <a href="updatebarangayCMRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icons-->
-                                <a href="updatebarangayCMRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icons-->
-                                <a href="updatebarangayCMRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b-2 border-orange-300">
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5"></td>
-                            <td class="py-2 px-5 flex gap-2 items-center justify-center">
-                                <!--edit icons-->
-                                <a href="updatebarangayCMRecords.php">
-                                    <span id="editIcon" class="iconify" data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
-                                </a>
-                            </td>
-                        </tr>                        
+
+                    <?php 
+                        $brgyID = $_SESSION['BarangayID'];
+
+                        $childMalListData = "SELECT clCmID, clCmMalType, clCmPercent, clCmYear, clBrID
+                        FROM tbchildmalnutrition WHERE clBrID = '$brgyID'";
+
+                        if(!$connectdb -> query($childMalListData)){
+                            array_push($errors, "Errorcode:". $connectdb->errno);    
+                        }
+                        $result = $connectdb -> query($childMalListData);
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()) {
+                                echo'<tr class="border-b-2 border-orange-300">';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clCmID"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clCmYear"].'</td>';
+                                    echo'<td class="bg-white pl-12 text-center top-0 p-1">'.$row["clCmMalType"].'</td>';
+                                    echo'<td class="bg-white pl-12 text-center top-0 p-1">'.$row["clCmPercent"].'</td>';
+                                    echo'<td class="bg-white top-0 pl-4 py-5 grid justify-center">';
+                                    // Change location into the update page
+                                        echo ' <div class="flex">
+                                                    <a href="updatebarangayCMRecords.php?clCmID='.$row["clCmID"].'">
+                                                        <span id="editIcon" class="iconify" 
+                                                        data-icon="bxs:edit" style="color: #77c9e3;" data-width="25"></span>
+                                                    </a>';
+
+                                        echo '      <a href="../crud/tbchildmalnutritionDeleteRecord.php?clCmID='.$row['clCmID'].'">
+                                                        <span id="deleteIcon" class="iconify" 
+                                                        data-icon="ant-design:delete-filled" style="color: #d76c6c;" data-width="25"></span>
+                                                    </a>
+                                                </div>';
+                                    echo'</td>';
+                                }
+                            }   
+
+                        ?>              
                     </tbody>
                 </table>
                 <!--end of table-->
@@ -119,6 +95,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
     </div>
 
     <script src="../javascript/submenu.js"></script>
+    <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 </body>
