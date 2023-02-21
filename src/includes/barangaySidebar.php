@@ -38,7 +38,7 @@
             <a href="barangayRecords.php" class="flex items-center gap-5 pl-2 py-2 ">
                     <span class="iconify-inline ml-2 flex-none" data-icon="bxs:folder" style="color: #ffc46b;" data-width="28"></span>
                     <span class="text-sm">
-                        City Poverty and Malnutrition Records 
+                        Poverty and Malnutrition Records 
                     </span>
             </a>
             <button id="arrowBtn">

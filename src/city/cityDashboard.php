@@ -64,7 +64,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                                 <?php 
                                 if($result->num_rows>0){
                                     while($row = $result->fetch_assoc()){
-                                        echo $row['clAVGPercent'];
+                                        echo round($row['clAVGPercent'],2).'%';
                                     }
                                 }else{
                                     echo 'No Record Found in this Year';

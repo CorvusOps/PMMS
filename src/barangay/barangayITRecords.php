@@ -63,9 +63,9 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                             while($row = $result->fetch_assoc()) {
                                 echo'<tr class="border-b-2 border-orange-300">';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["tbItID"].'</td>';
-                                    echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["clITYear"].'</td>';
-                                    echo'<td class="bg-white pl-16 text-center top-0 p-1">'.$row["tbItPercent"].'</td>';
-                                    echo'<td class="bg-white top-0 grid justify-center pl-16 py-5">';
+                                    echo'<td class="bg-white pl-3 text-center top-0 p-1">'.$row["clITYear"].'</td>';
+                                    echo'<td class="bg-white pl-3 text-center top-0 p-1">'.$row["tbItPercent"].'</td>';
+                                    echo'<td class="bg-white top-0 grid justify-center pl-3 py-5">';
                                     // Change location into the update page
                                         echo '  <div class="flex">
                                                     <a href="updatebarangayITRecords.php?tbItID='.$row["tbItID"].'">

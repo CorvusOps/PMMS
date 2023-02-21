@@ -78,7 +78,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
             <!--
                 <p>Already have an account?</p>
             -->
-                <a href="cityBarangays.php">
+                <a href="barangayRecords.php">
                 <p>Cancel</p>
 
             </a>

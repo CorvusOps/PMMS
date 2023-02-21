@@ -44,7 +44,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                 <!--table for users-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <thead>
-                        <tr class="shadow-sm shadow-gray-500">
+                        <tr class="border-b-2 border-gray-400">
                             <th class="py-2 px-5 text-left font-extralight">ID</th>
                             <th class="py-2 px-5 text-left font-extralight">Username</th>
                             <th class="py-2 px-5 text-left font-extralight">Name</th>
