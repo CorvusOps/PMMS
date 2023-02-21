@@ -49,7 +49,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
                 
                 <?php 
                     $cmQuery = "SELECT cm.clBrID, AVG(cm.clCmPercent) AS clAVGPercent FROM pmms.tbchildmalnutrition as cm
-                    INNER JOIN pmms.tbbarangay AS br ON cm.clBrID = br.clBrID WHERE cm.clBrID = $clBrID GROUP BY cm.clBrID";
+                    INNER JOIN pmms.tbbarangay AS br ON cm.clBrID = br.clBrID WHERE (cm.clBrID = $clBrID)  AND (cm.clCmYear = $clTdYear) GROUP BY cm.clBrID";
                     $ftQuery = "SELECT * FROM tbfoodthreshold WHERE clFtYear = $clTdYear AND clBrID = $clBrID;";
                     $itQuery = "SELECT * FROM tbincomethreshold WHERE clItYear = $clTdYear AND clBrID = $clBrID;";
                     $unQuery = "SELECT * FROM tbunemployment WHERE clUnYear = $clTdYear AND clBrID = $clBrID;";
@@ -81,23 +81,22 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
                     } else {
                         $UNrow["clUnPercent"] = 0;
                     }
-                   
                 
                 echo'<label for="" class="ml-4 text-gray-600">Child Malnutrition Percentage</label><br>
                     <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                            type="text" value="'.$CMrow["clAVGPercent"].'" placeholder="Year" readonly><br>
+                            type="text" name="childMalAve" value="'.$CMrow["clAVGPercent"].'" placeholder="Child Malnutrition" readonly><br>
                     
                     <label for="" class="ml-4 text-gray-600">Food Threshold Percentage</label><br>
                     <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                    type="text" value="'.$FTrow["clFtPercent"].'" placeholder="Year" readonly><br>
+                    type="text" value="'.$FTrow["clFtPercent"].'" placeholder="Food Threshold Percentage" readonly><br>
                     
                     <label for="" class="ml-4 text-gray-600">Income Threshold Percentage</label><br>
                     <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                    type="text" value="'.$ITrow["tbItPercent"].'" placeholder="Year" readonly><br>
+                    type="text" value="'.$ITrow["tbItPercent"].'" placeholder="Income Threshold Percentage" readonly><br>
                     
                     <label for="" class="ml-4 text-gray-600">Unemployment Percentage</label><br>
                     <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                    type="text" value="'.$UNrow["clUnPercent"].'" placeholder="Year" readonly>';
+                    type="text" value="'.$UNrow["clUnPercent"].'" placeholder="Unemployment" readonly>';
                 ?>
 
                 <br>

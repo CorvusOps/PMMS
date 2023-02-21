@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $tdQuery = "SELECT * FROM tbtotaldeprivation WHERE clTdYear = $clTdYear AND clBrID = $clBrID;";
     $cmQuery = "SELECT cm.clBrID, AVG(cm.clCmPercent) AS clAVGPercent FROM pmms.tbchildmalnutrition as cm
-                INNER JOIN pmms.tbbarangay AS br ON cm.clBrID = br.clBrID WHERE cm.clBrID = $clBrID GROUP BY cm.clBrID";
+                INNER JOIN pmms.tbbarangay AS br ON cm.clBrID = br.clBrID WHERE cm.clBrID = $clBrID AND cm.clCmYear = $clTdYear GROUP BY cm.clBrID";
     $ftQuery = "SELECT * FROM tbfoodthreshold WHERE clFtYear = $clTdYear AND clBrID = $clBrID;";
     $itQuery = "SELECT * FROM tbincomethreshold WHERE clItYear = $clTdYear AND clBrID = $clBrID;";
     $unQuery = "SELECT * FROM tbunemployment WHERE clUnYear = $clTdYear AND clBrID = $clBrID;";
@@ -53,18 +53,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ITrow = $ITresults->fetch_assoc();
         $UNrow = $UNresults->fetch_assoc();
         
-
         $clTdPercent = ($CMrow["clAVGPercent"] + $FTrow["clFtPercent"] + $ITrow["tbItPercent"] + $UNrow["clUnPercent"] )/ 4 ;
-        //print($DeprivationSum);
+        $clCmAverage = $CMrow["clAVGPercent"];
         
         $clCmID = 0;
         $clFtID = $FTrow["clFtID"];
         $clItID = $ITrow["tbItID"];
         $clUnID = $UNrow["clUnID"];
 
-        $TDValues = "INSERT INTO tbtotaldeprivation (clTdPercent,clTdYear,clBrID,clCmID,clFtID,clItID,clUnID)
-                VALUES ('$clTdPercent','$clTdYear','$clBrID','$clCmID','$clFtID','$clItID','$clUnID');";
+        $TDValues = "INSERT INTO tbtotaldeprivation (clTdPercent,clTdYear,clBrID,clCmID, clCmAverage, clFtID,clItID,clUnID)
+                VALUES ('$clTdPercent','$clTdYear','$clBrID','$clCmID', '$clCmAverage', '$clFtID','$clItID','$clUnID');";
         $result = mysqli_query($connectdb, $TDValues);
+        
         //catch mysqli exception
         if($result) {
         //mysqli_free_result($result);
