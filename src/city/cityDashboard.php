@@ -67,7 +67,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                                         echo round($row['clAVGPercent'],2).'%';
                                     }
                                 }else{
-                                    echo 'No Record Found in this Year';
+                                    echo '0%';
                                 }
                                 ?>
                             </span>

@@ -21,7 +21,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/output.css">
     <script defer src="../javascript/activePage.js"></script>
-    <title>Document</title>
+    <title>Total Deprivation</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
 <?php include '../includes/header.php' ?>
@@ -30,21 +30,20 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
         
         <div class="h-full ml-72 px-12 py-6 w-full grid justify-center">
 
-            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Add Records</h1>
+            <h1 class="mt-2 mb-2 text-2xl font-semibold tracking-wider text-orange-200 text-center">Add Records</h1>
             
             <form action="../crud/tbtotaldeprivationAddRecord.php" method="post">
                 
-                <br>
                 <label for="clTdYear" class="ml-4 text-gray-600">Year</label>
                 <div class="relative flex items-center">
-                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                         type="text" value="<?php echo $clTdYear ?>" name="clTdYear" placeholder="Year" readonly>
                 </div>
 
                 <label for="clBrID" class="ml-4 text-gray-600">Barangay</label>
                 <input type="hidden" name="clBrID" value="<?php echo $_SESSION['BarangayID'] ?>">
                 <div class="relative flex items-center">
-                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                         type="text" value="<?php echo $_SESSION['Barangay'] ?>" placeholder="Year" readonly>
                 </div>
                 
@@ -85,25 +84,25 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
                    
                 
                 echo'<label for="" class="ml-4 text-gray-600">Child Malnutrition Percentage</label><br>
-                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                             type="text" value="'.$CMrow["clAVGPercent"].'" placeholder="Year" readonly><br>
                     
                     <label for="" class="ml-4 text-gray-600">Food Threshold Percentage</label><br>
-                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                     type="text" value="'.$FTrow["clFtPercent"].'" placeholder="Year" readonly><br>
                     
                     <label for="" class="ml-4 text-gray-600">Income Threshold Percentage</label><br>
-                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                     type="text" value="'.$ITrow["tbItPercent"].'" placeholder="Year" readonly><br>
                     
                     <label for="" class="ml-4 text-gray-600">Unemployment Percentage</label><br>
-                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                     type="text" value="'.$UNrow["clUnPercent"].'" placeholder="Year" readonly>';
                 ?>
 
                 <br>
                 <button type="submit" name="addRecordBtn" formaction="../crud/tbtotaldeprivationAddRecord.php"
-                    class="mt-4 uppercase border-gray-600 px-6 py-2 p-1 w-48 rounded-xl bg-white text-gray-800 hover:text-white shadow-sm hover:bg-slate-700 hover:shadow-lg mb-5 cursor-pointer"> 
+                    class="mt-2 uppercase border-gray-600 px-6 py-2 p-1 w-48 rounded-xl bg-white text-gray-800 hover:text-white shadow-sm hover:bg-slate-700 hover:shadow-lg mb-5 cursor-pointer"> 
                     Add Record
                 </button>
                 
@@ -123,6 +122,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
     </div>
 
     <script src="../javascript/modal.js"></script>
+    <script src="../javascript/submenu.js"></script>
     <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
