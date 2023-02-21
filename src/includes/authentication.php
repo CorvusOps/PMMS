@@ -59,7 +59,7 @@ if (isset($_POST['login'])){
                     break;
                 case "BC":
                     $brID = $user['clUrID'];
-                    $barangayquery = mysqli_query($connectdb, " SELECT * FROM tbbarangay WHERE clUrID = '$brID'");
+                    $barangayquery = mysqli_query($connectdb, " SELECT clBrID, clBrName FROM tbbarangay WHERE clUrID = '$brID'");
                     $barangay = mysqli_fetch_array($barangayquery);
                     $_SESSION['bc_sid'] = session_id();
                     $_SESSION['ID'] = $user['clUrID'];

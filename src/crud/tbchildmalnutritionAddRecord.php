@@ -5,9 +5,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $clCmMalType = $_POST["clCmMalType"];
     $clCmPercent = $_POST["clCmPercent"];
-    $clCmYear = $_POST["clCmYear"];
-    $clBrID =   $_SESSION['BarangayID'];
-    $CMQuery = "SELECT * FROM tbchildmalnutrition WHERE clCmPercent = $clCmPercent AND clCmYear = $clCmYear;";
+    $clRID = $_POST["clRID"];
+    $clBrID =  $_SESSION['BarangayID'];
+    $CMQuery = "SELECT * FROM tbchildmalnutrition WHERE clCmPercent = $clCmPercent AND clRID = $clRID;";
     $CMresults = mysqli_query($connectdb, $CMQuery);
 
     if(mysqli_num_rows($CMresults)>0) {
@@ -16,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         window.location = '../barangay/addbarangayCMRecords.php';
         </script>"; 
     }else {
-        $FTquery = "INSERT INTO tbchildmalnutrition(clCmMalType,clCmPercent,clCmYear,clBrID)
-        VALUES ('$clCmMalType','$clCmPercent','$clCmYear','$clBrID');";
+        $FTquery = "INSERT INTO tbchildmalnutrition(clCmMalType,clCmPercent,clRID,clBrID)
+        VALUES ('$clCmMalType','$clCmPercent','$clRID','$clBrID');";
         $result = mysqli_query($connectdb, $FTquery);
         //catch mysqli exception
         if($result) {
