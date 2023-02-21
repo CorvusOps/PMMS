@@ -61,15 +61,17 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                         $result = $connectdb -> query($totalDep);
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()) {
+                                echo '<form action="" method="POST">';
                                 echo' <tr class="border-b-2 border-orange-300">';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdID"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdYear"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdPercent"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                                 echo'      <td class="py-2 px-5 text-center">
-                                                <button>
-                                                    View Details
-                                                </button>
+                                           <button type="submit" name="TdIDbtn" onclick="openModal(\'.add-modal\')" value='.$row["clTdID"].' >
+                                                View Details
+                                            </button>
+                                        </form>
                                             </td>';
                                 echo'  </tr>';
                             }
@@ -89,7 +91,11 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
         </div>
         <!--end of full page div-->
     </div>
+
+    <?php include '../modals/barangayTotalDepDetails.php' ?>
+
     <script src="../javascript/submenu.js"></script>
+    <script src="../javascript/modal.js"></script>
     <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
