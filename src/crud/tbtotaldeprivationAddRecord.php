@@ -8,7 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $clBrID = $_POST["clBrID"];
 
     $tdQuery = "SELECT * FROM tbtotaldeprivation WHERE clTdYear = $clTdYear AND clBrID = $clBrID;";
-    $cmQuery = "SELECT * FROM tbchildmalnutrition WHERE clCmYear = $clTdYear AND clBrID = $clBrID;";
+    $cmQuery = "SELECT cm.clBrID, AVG(cm.clCmPercent) AS clAVGPercent FROM pmms.tbchildmalnutrition as cm
+                INNER JOIN pmms.tbbarangay AS br ON cm.clBrID = br.clBrID WHERE cm.clBrID = $clBrID GROUP BY cm.clBrID";
     $ftQuery = "SELECT * FROM tbfoodthreshold WHERE clFtYear = $clTdYear AND clBrID = $clBrID;";
     $itQuery = "SELECT * FROM tbincomethreshold WHERE clItYear = $clTdYear AND clBrID = $clBrID;";
     $unQuery = "SELECT * FROM tbunemployment WHERE clUnYear = $clTdYear AND clBrID = $clBrID;";
@@ -18,27 +19,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ITresults = mysqli_query($connectdb, $itQuery);
     $UNresults = mysqli_query($connectdb, $unQuery);
 
+
     if(mysqli_num_rows($TDresults)>0) {
         echo "<script>
         alert('Error: Record already exists');  
         window.location = '../barangay/addbarangayCMRecords.php';
         </script>"; 
-    }elseif(mysqli_num_rows($CMresults)!=1){
+    }elseif(mysqli_num_rows($CMresults)==0){
         echo "<script>
         alert('Error: Record NOT Found, please fill up the missing record.');  
         window.location = '../barangay/barangayCMRecords.php';
         </script>"; 
-    }elseif(mysqli_num_rows($FTresults)!=1){
+    }elseif(mysqli_num_rows($FTresults)==0){
         echo "<script>
         alert('Error: Record NOT Found, please fill up the missing record.');  
         window.location = '../barangay/barangayFTRecords.php';
         </script>"; 
-    }elseif(mysqli_num_rows($ITresults)!=1){
+    }elseif(mysqli_num_rows($ITresults)==0){
         echo "<script>
         alert('Error: Record NOT Found, please fill up the missing record.');  
         window.location = '../barangay/barangayITRecords.php';
         </script>"; 
-    }elseif(mysqli_num_rows($UNresults)!=1){
+    }elseif(mysqli_num_rows($UNresults)==0){
         echo "<script>
         alert('Error: Record NOT Found, please fill up the missing record.');  
         window.location = '../barangay/barangayUNRecords.php';
@@ -50,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $FTrow = $FTresults->fetch_assoc();
         $ITrow = $ITresults->fetch_assoc();
         $UNrow = $UNresults->fetch_assoc();
+        
 
         var_dump($CMrow);
         echo" <br>";
@@ -60,10 +63,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var_dump($UNrow);
         echo" <br>";
 
-        $clTdPercent = ($CMrow["clCmPercent"] + $FTrow["clFtPercent"] + $ITrow["tbItPercent"] + $UNrow["clUnPercent"] )/ 4 ;
+        $clTdPercent = ($CMrow["clAVGPercent"] + $FTrow["clFtPercent"] + $ITrow["tbItPercent"] + $UNrow["clUnPercent"] )/ 4 ;
         //print($DeprivationSum);
         
-        $clCmID = $CMrow["clCmID"];
+        $clCmID = 0;
         $clFtID = $FTrow["clFtID"];
         $clItID = $ITrow["tbItID"];
         $clUnID = $UNrow["clUnID"];
@@ -76,13 +79,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //mysqli_free_result($result);
             echo "<script> 
             alert('Record is successfully added!'); 
-            window.location = '../barangay/barangayCMRecords.php'; 
+            window.location = '../barangay/barangayRecords.php'; 
             </script>";  
         } else {
             mysqli_close($connectdb);
             echo "<script>
             alert('Failed to add.');  
-            window.location = '../barangay/addbarangayCMRecordsTemplate.php';
+            window.location = '../barangay/barangayRecords.php';
             </script>"; 
 
         }
@@ -91,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 else {
     echo "<script>
     alert('Failed to add.'); 
-    window.location = '../barangay/addbarangayCMRecordsTemplate.php';
+    window.location = '../barangay/barangayRecords.php';
     </script>"; 
 }
 ?>
