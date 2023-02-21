@@ -72,7 +72,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                             echo'      <td class="text-center py-5 px-5">'.$row["clFtID"].'</td>';
                             echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                             echo'      <td class="text-center py-5 px-5">'.$row["clFtYear"].'</td>';
-                            echo'      <td class="text-center py-5 px-5">'.$row["clFtPercent"].'%</td>';
+                            echo'      <td class="text-center py-5 px-5">'.$row["clFtPercent"].'</td>';
                             echo'  </tr>';
                                 }
                         } else {
