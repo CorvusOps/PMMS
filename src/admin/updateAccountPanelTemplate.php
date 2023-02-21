@@ -33,8 +33,8 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
     <div class="flex">
         <?php include '../includes/adminSidebar.php'; ?>
         
-        <div class="h-full ml-72 px-12 py-6 w-full grid justify-center">
-            <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Update Account</h1>
+        <div class="h-full ml-72 px-12 py-2 w-full grid justify-center">
+            <h1 class="mt-2 text-2xl font-semibold tracking-wider text-orange-200 text-center">Update Account</h1>
             <?php
             $userQuery = mysqli_query($connectdb, "SELECT * FROM tbusers WHERE clUrID ='$clUrID'");
             $row = $userQuery->fetch_assoc();      
@@ -56,31 +56,31 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                 <label for="clUrUsername">Username</label>
                 <br>
                 <input type="text" value="<?php echo $row['clUrUsername']; ?>" name="clUrUsername" placeholder="Username"
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
                 
                 <br>
                 <label for="clUrPassword">Password</label>
                 <br>
                 <input type="password" name="clUrPassword" placeholder="Re-type your Password"
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
                 
                 <br>
                 <label for="clUrName">Name</label>
                 <br>
                 <input type="text" value="<?php echo $row['clUrName']; ?>" name="clUrName" placeholder="Name"
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
                 
                 <br>
                 <label for="clUrContactNum">Contact Number</label>
                 <br>
                 <input type="text" value="<?php echo $row['clUrContactNum']; ?>" name="clUrContactNum" placeholder="Contact Number"
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
                 
                 <br>
                 <label for="clUrEmail">Email</label>
                 <br>
                 <input type="text" value="<?php echo $row['clUrEmail']; ?>" name="clUrEmail" placeholder="Email "
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
                 
                 <!-- WHY I DIDNT START AT 0
                 - 1. ENUM in mysql starts at 1, so when indexing in enum
@@ -90,10 +90,27 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                 <label for="clUrLevel">User Level</label>
                 <br>
                 <select value="<?php echo $row['clUrLevel']; ?>" name="clUrLevel"
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
-                    <option value="1">CM - City Mayor</option>
-                    <option value="2">MS - Municipal Staff</option>
-                    <option value="3" selected>BC - Barangay Captian</option>
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                    <?php 
+
+                    function returnUserRole($userRole){
+                        // this function check for the user's role and return role in full text
+                        if($userRole == 'CM'){
+                            return "City Mayor";
+                        }
+                        if($userRole == 'MS'){
+                            return "Municipal Staff";
+                        }
+                        return "Barangay Captain";
+                    }
+
+                    $roleText = returnUserRole($row['clUrRole']);
+                        
+                        echo "<option value=$row[clUrLevel] selected>$row[clUrRole] - $roleText</option>";
+                        echo '<option value="1">CM - City Mayor</option>
+                              <option value="2">MS - Municipal Staff</option>
+                              <option value="3">BC - Barangay Captain</option>';
+                    ?>  
                 </select>
 
                 <input type="hidden" name="clUrID" value=" <?php echo $row['clUrID'] ;?> "  id="clUrID"/>
