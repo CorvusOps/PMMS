@@ -81,7 +81,6 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
                     } else {
                         $UNrow["clUnPercent"] = 0;
                     }
-                   
                 
                 echo'<label for="" class="ml-4 text-gray-600">Child Malnutrition Percentage</label><br>
                     <input class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"

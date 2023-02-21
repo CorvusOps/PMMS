@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $TDValues = "INSERT INTO tbtotaldeprivation (clTdPercent,clTdYear,clBrID,clCmID, clCmAverage, clFtID,clItID,clUnID)
                 VALUES ('$clTdPercent','$clTdYear','$clBrID','$clCmID', '$clCmAverage', '$clFtID','$clItID','$clUnID');";
         $result = mysqli_query($connectdb, $TDValues);
+        
         //catch mysqli exception
         if($result) {
         //mysqli_free_result($result);
