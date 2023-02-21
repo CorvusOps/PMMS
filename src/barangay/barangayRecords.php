@@ -29,7 +29,14 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
         <div class="h-full ml-72 px-12 py-6 w-full">
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Poverty and Malnutrition Records</h1>
-            
+            <div class="w-full flex justify-end">
+                
+            <a href="addTotalDepRecord.php" class="flex items-center gap-3 bg-orange-300 rounded-xl py-2 px-4 text-white"> 
+                    <span class="iconify" data-icon="akar-icons:plus" data-width="25"></span>
+                    Add Record
+                </a>
+            </div>
+
             <div class="w-full mt-4">
                 <!--table for users-->
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
