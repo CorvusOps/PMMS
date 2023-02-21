@@ -67,15 +67,17 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                         // $result = $connectdb -> query($totalDepListData);
                         if($totalDepListData->num_rows > 0){
                             while($row = $totalDepListData->fetch_assoc()) {
+                                echo '<form action="" method="POST">';
                                 echo' <tr class="border-b-2 border-orange-300">';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdID"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdYear"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdPercent"].'</td>';
                                 echo'      <td class="py-2 px-5 text-center">
-                                                <button>
+                                                <button type="submit" name="TdIDbtn" onclick="openModal(\'.add-modal\')" value='.$row["clTdID"].' >
                                                     View Details
                                                 </button>
+                                        </form>
                                             </td>';
                                 echo'  </tr>';
                             }
@@ -96,6 +98,9 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
         <!--end of full page div-->
     </div>
 
+    <?php include '../modals/viewBarangayTotalDepDetails.php' ?>
+
+    <script src="../javascript/modal.js"></script>
     <script src="../javascript/headerDropDown.js"></script>
     <script src="../javascript/submenu.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>

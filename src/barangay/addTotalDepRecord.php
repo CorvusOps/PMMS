@@ -18,7 +18,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/output.css">
     <script defer src="../javascript/activePage.js"></script>
-    <title>Document</title>
+    <title>Total Deprivation</title>
 </head>
 <body class="bg-[#FFF0B9] font-Poppins">
 <?php include '../includes/header.php' ?>
@@ -30,25 +30,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
             
             <form action="../crud/tbtotaldeprivationAddRecord.php" method="post">
 
-                <br>
-                <?php 
-                    // optional but we can put if the barangay captians account is still active or resigned alredy
-                    //$YearQuery = "SELECT clRID, clRYear FROM pmms.tbrecord;";
-                    //$BarangayQuery = "SELECT cm.clBrID, br.clBrName FROM pmms.tbchildmalnutrition AS cm 
-                    //                        INNER JOIN pmms.tbbarangay AS br
-                    //                        WHERE cm.clBrID = br.clBrID;";
-                    
-
-                    //$CMQuery = "SELECT clCmID, clCmMalType, clCmPercent, clCmYear 
-                                    //FROM tbchildmalnutrition;";
-                    //$YearResult = mysqli_query($connectdb, $YearQuery);
-                    //$BarangayResult = mysqli_query($connectdb, $BarangayQuery);
-                    //$row = $result->fetch_assoc();
-
-                    //var_dump($_SESSION);
-
-                ?>  
-
+                <br> 
                 <br>
                 <label for="clTdYear" class="ml-4 text-gray-600">Year</label>
                 <div class="relative flex items-center">
@@ -86,6 +68,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
     </div>
 
     <script src="../javascript/modal.js"></script>
+    <script src="../javascript/submenu.js"></script>
     <script src="../javascript/headerDropDown.js"></script>
     <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
