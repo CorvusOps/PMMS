@@ -52,6 +52,9 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     </div>
 
                     <div class="flex justify-end items-center w-1/2">
+                        <?php 
+                            $YearQuery = "SELECT clRID, clRYear FROM tbtotaldeprivation;";
+                        ?>
                         <span class="text-4xl font-bold text-black">
                             <span id="cityTotalDep">
                                 <!--must change depending on the totalDep of City-->

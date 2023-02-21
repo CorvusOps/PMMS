@@ -28,15 +28,17 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
         <?php include '../includes/citySidebar.php' ?>
         
         <div class="h-full ml-72 px-12 py-6 w-full">
+            
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Poverty and Malnutrition Records</h1>
+            
             <form action="" method="GET" id="search-bar" class="w-full flex justify-end">
                 <input type="text" name="query" placeholder="Search Record" value="" class="text-sm focus:outline-none focus:ring-1 focus:ring-orange-300 px-2" required>
                 <button class="flex items-center gap-2 bg-orange-300 py-[5px] px-4 text-white"> 
                     <span class="iconify" data-icon="akar-icons:search" data-width="20"></span>
                     Search
                 </button>
-            </form>
+            </form>            
             
             <div class="w-full mt-4">
                 <!--table for users-->

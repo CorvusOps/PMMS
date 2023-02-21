@@ -42,7 +42,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                 <table class="table-auto bg-white w-full text-[#623C04] text-left text-sm">
                     <thead>
                         <tr class="shadow-sm shadow-gray-500">
-                            <th class="py-2 px-8 text-center font-extralight">id</th>
+                            <th class="py-2 px-8 text-center font-extralight">Id</th>
                             <th class="py-2 px-5 text-center font-extralight">Year</th>
                             <th class="py-2 px-5 text-center font-extralight">Total Deprivation</th>
                             <th class="py-2 px-5 text-center font-extralight">Actions</th>
@@ -51,7 +51,10 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                     <tbody>
                     <?php 
                         $brgyID = $_SESSION['BarangayID'];
-                        $totalDep = "SELECT * FROM pmms.tbtotaldeprivation WHERE clBrID = '$brgyID'";
+                        $totalDep = "SELECT td.clTdID, td.clTdYear, td.clTdPercent, br.clBrName    
+                                FROM pmms.tbtotaldeprivation AS td 
+                                LEFT JOIN pmms.tbbarangay AS br ON td.clBrID = br.clBrID
+                                        WHERE Td.clBrID = '$brgyID'";
                         if(!$connectdb -> query($totalDep)){
                             array_push($errors, "Errorcode:". $connectdb->errno);    
                         }
@@ -61,8 +64,8 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                                 echo' <tr class="border-b-2 border-orange-300">';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdID"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdYear"].'</td>';
-                                echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdPercent"].'</td>';
+                                echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                                 echo'      <td class="py-2 px-5 text-center">
                                                 <button>
                                                     View Details

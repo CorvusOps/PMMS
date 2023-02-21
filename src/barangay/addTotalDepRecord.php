@@ -61,7 +61,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
                 <input type="hidden" name="clBrID" value="<?php echo $_SESSION['BarangayID'] ?>">
                 <div class="relative flex items-center">
                     <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                        type="text" name="clTdYear" value="<?php echo $_SESSION['Barangay'] ?>" placeholder="Year" readonly>
+                        type="text" value="<?php echo $_SESSION['Barangay'] ?>" placeholder="Year" readonly>
                 </div>
 
                 <br>
