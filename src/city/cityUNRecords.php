@@ -71,7 +71,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                                 echo'      <td class="text-center py-5 px-5">'.$row["clUnID"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clUnYear"].'</td>';
-                                echo'      <td class="text-center py-5 px-5">'.$row["clUnPercent"].'%</td>';
+                                echo'      <td class="text-center py-5 px-5">'.$row["clUnPercent"].'</td>';
                                 echo' </tr>';
                                 }
                             } else {

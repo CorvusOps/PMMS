@@ -27,32 +27,23 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
         <div class="h-full ml-72 px-12 py-6 w-full grid justify-center">
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Add Child Malnutrition</h1>
             <form action="#" method="post">
-
+                
                 <br>
-                <label for="clRID">YEAR</label><br>
-                <select value="" name="clRID" 
-                    class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
-                    <?php 
-                        // optional but we can put if the barangay captians account is still active or resigned alredy
-                        $YearQuery = "SELECT clRID, clRYear FROM tbrecord";
-                        $result = mysqli_query($connectdb, $YearQuery);
-                    
-                        while($row = $result->fetch_assoc()){
-                            echo "<option value=$row[clRID]>$row[clRYear]</option>";
-                        }
-                    ?>  
-                </select>
+                <label for="clCmYear" class="ml-4 text-gray-600">Year</label>
+                <div class="relative flex items-center">
+                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                        type="text" name="clCmYear" placeholder="Year" required>
+                </div>
 
-                <br>
                 <!--Fetch child malnutrition details in db and set as options-->
                 <label for="clCmMalType" class="ml-4 text-gray-600">Malnutrition Type</label>
                 <br>
                 <select value="" name="clCmMalType" 
                 class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
-                    <option value="1" selected>Stunted</option>
-                    <option value="2">Wasted</option>
-                    <option value="3">Underweight</option>
-                    <option value="4">Micronutrient</option>
+                    <option value="0" selected>Stunted</option>
+                    <option value="1">Wasted</option>
+                    <option value="2">Underweight</option>
+                    <option value="3">Micronutrient</option>
                 </select>
 
                 <br>

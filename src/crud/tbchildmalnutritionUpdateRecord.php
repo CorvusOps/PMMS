@@ -4,9 +4,9 @@ include '../includes/connectdb.php';
 if(isset($_GET["clCmID"]) && !empty($_GET["clCmID"])){
     $clCmID = $_GET['clCmID'];
     $clCmMalType = $_POST['clCmMalType'];
-    $clRID = $_POST['clRID'];
+    $clCmYear = $_POST['clCmYear'];
     $clCmPercent = $_POST['clCmPercent'];
-    $updatequery = "UPDATE tbchildmalnutrition SET clCmPercent = '$clCmPercent', clRID = '$clRID' WHERE clCmID ='$clCmID';";
+    $updatequery = "UPDATE tbchildmalnutrition SET clCmPercent = '$clCmPercent', clCmYear = '$clCmYear' WHERE clCmID ='$clCmID';";
 
     if(mysqli_query($connectdb, $updatequery)){
         echo "<script> 
