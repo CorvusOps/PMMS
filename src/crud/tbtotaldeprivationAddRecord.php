@@ -23,27 +23,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(mysqli_num_rows($TDresults)>0) {
         echo "<script>
         alert('Error: Record already exists');  
-        window.location = '../barangay/addbarangayCMRecords.php';
+        window.location = '../barangay/barangayRecords.php';
         </script>"; 
     }elseif(mysqli_num_rows($CMresults)==0){
         echo "<script>
         alert('Error: Record NOT Found, please fill up the missing record.');  
-        window.location = '../barangay/barangayCMRecords.php';
+        window.location = '../barangay/barangayRecords.php';
         </script>"; 
     }elseif(mysqli_num_rows($FTresults)==0){
         echo "<script>
         alert('Error: Record NOT Found, please fill up the missing record.');  
-        window.location = '../barangay/barangayFTRecords.php';
+        window.location = '../barangay/barangayRecords.php';
         </script>"; 
     }elseif(mysqli_num_rows($ITresults)==0){
         echo "<script>
         alert('Error: Record NOT Found, please fill up the missing record.');  
-        window.location = '../barangay/barangayITRecords.php';
+        window.location = '../barangay/barangayRecords.php';
         </script>"; 
     }elseif(mysqli_num_rows($UNresults)==0){
         echo "<script>
         alert('Error: Record NOT Found, please fill up the missing record.');  
-        window.location = '../barangay/barangayUNRecords.php';
+        window.location = '../barangay/barangayRecords.php';
         </script>"; 
     }else {
 
@@ -53,15 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ITrow = $ITresults->fetch_assoc();
         $UNrow = $UNresults->fetch_assoc();
         
-
-        var_dump($CMrow);
-        echo" <br>";
-        var_dump($FTrow);
-        echo" <br>";
-        var_dump($ITrow);
-        echo" <br>";
-        var_dump($UNrow);
-        echo" <br>";
 
         $clTdPercent = ($CMrow["clAVGPercent"] + $FTrow["clFtPercent"] + $ITrow["tbItPercent"] + $UNrow["clUnPercent"] )/ 4 ;
         //print($DeprivationSum);

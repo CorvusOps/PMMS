@@ -65,8 +65,8 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                                 echo'<tr class="border-b-2 border-orange-300">';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clCmID"].'</td>';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clCmYear"].'</td>';
-                                    echo'<td class="bg-white pl-12 text-center top-0 p-1">'.$row["clCmMalType"].'</td>';
-                                    echo'<td class="bg-white pl-12 text-center top-0 p-1">'.$row["clCmPercent"].'</td>';
+                                    echo'<td class="bg-white pl-10 text-center top-0 p-1">'.$row["clCmMalType"].'</td>';
+                                    echo'<td class="bg-white pl-10 text-center top-0 p-1">'.$row["clCmPercent"].'</td>';
                                     echo'<td class="bg-white top-0 pl-4 py-5 grid justify-center">';
                                     // Change location into the update page
                                         echo ' <div class="flex">
@@ -82,9 +82,14 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                                                 </div>';
                                     echo'</td>';
                                 }
-                            }   
-
-                        ?>              
+                            } else {
+                                //If no matching data found, return message that there's no record
+                                echo' <tr class="border-b-2 border-orange-300 ">';
+                                echo'      <td colspan="5" class="text-center py-5 px-5">No Record Found.</td>';
+                                echo '</tr>';
+                            }  
+                        ?>  
+                                    
                     </tbody>
                 </table>
                 <!--end of table-->

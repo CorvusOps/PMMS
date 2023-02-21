@@ -30,47 +30,24 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
         
         <div class="h-full ml-72 px-12 py-6 w-full grid justify-center">
 
-            <?php var_dump($_POST);?>
-
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Add Records</h1>
             
-            
             <form action="../crud/tbtotaldeprivationAddRecord.php" method="post">
-
-                <br>
-                <?php 
-                    // optional but we can put if the barangay captians account is still active or resigned alredy
-                    //$YearQuery = "SELECT clRID, clRYear FROM pmms.tbrecord;";
-                    //$BarangayQuery = "SELECT cm.clBrID, br.clBrName FROM pmms.tbchildmalnutrition AS cm 
-                    //                        INNER JOIN pmms.tbbarangay AS br
-                    //                        WHERE cm.clBrID = br.clBrID;";
-                    
-
-                    //$CMQuery = "SELECT clCmID, clCmMalType, clCmPercent, clCmYear 
-                                    //FROM tbchildmalnutrition;";
-                    //$YearResult = mysqli_query($connectdb, $YearQuery);
-                    //$BarangayResult = mysqli_query($connectdb, $BarangayQuery);
-                    //$row = $result->fetch_assoc();
-
-                    //var_dump($_SESSION);
-
-                ?>  
-
+                
                 <br>
                 <label for="clTdYear" class="ml-4 text-gray-600">Year</label>
                 <div class="relative flex items-center">
                     <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                         type="text" value="<?php echo $clTdYear ?>" name="clTdYear" placeholder="Year" readonly>
                 </div>
-                
-                <br>
+
                 <label for="clBrID" class="ml-4 text-gray-600">Barangay</label>
                 <input type="hidden" name="clBrID" value="<?php echo $_SESSION['BarangayID'] ?>">
                 <div class="relative flex items-center">
                     <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                         type="text" value="<?php echo $_SESSION['Barangay'] ?>" placeholder="Year" readonly>
                 </div>
-
+                
                 <?php 
                     $cmQuery = "SELECT cm.clBrID, AVG(cm.clCmPercent) AS clAVGPercent FROM pmms.tbchildmalnutrition as cm
                     INNER JOIN pmms.tbbarangay AS br ON cm.clBrID = br.clBrID WHERE cm.clBrID = $clBrID GROUP BY cm.clBrID";
@@ -81,24 +58,47 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
                     $FTresults = mysqli_query($connectdb, $ftQuery);
                     $ITresults = mysqli_query($connectdb, $itQuery);
                     $UNresults = mysqli_query($connectdb, $unQuery);
-                    $CMrow = $CMresults->fetch_assoc();
-                    $FTrow = $FTresults->fetch_assoc();
-                    $ITrow = $ITresults->fetch_assoc();
-                    $UNrow = $UNresults->fetch_assoc();
+                    
+                    if($CMresults->num_rows>0){
+                        $CMrow = $CMresults->fetch_assoc();
+                    } else {
+                        $CMrow["clAVGPercent"] = 0;
+                    }
+
+                    if($FTresults->num_rows>0){
+                        $FTrow = $FTresults->fetch_assoc();
+                    } else {
+                        $FTrow["clFtPercent"] = 0;
+                    }
+
+                    if($ITresults->num_rows>0){
+                        $ITrow = $ITresults->fetch_assoc();
+                    } else {
+                        $ITrow["tbItPercent"] = 0;
+                    }
+
+                    if($UNresults->num_rows>0){
+                        $UNrow = $UNresults->fetch_assoc();
+                    } else {
+                        $UNrow["clUnPercent"] = 0;
+                    }
+                   
                 
-              
-                echo'<label for="" class="ml-4 text-gray-600">CM PERCENT</label><br>
-                <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                        type="text" value="'.$CMrow["clAVGPercent"].'" placeholder="Year" readonly><br>
-                <label for="" class="ml-4 text-gray-600">CM PERCENT</label><br>
-                <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                type="text" value="'.$FTrow["clFtPercent"].'" placeholder="Year" readonly><br>
-                <label for="" class="ml-4 text-gray-600">CM PERCENT</label><br>
-                <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                type="text" value="'.$ITrow["tbItPercent"].'" placeholder="Year" readonly><br>
-                <label for="" class="ml-4 text-gray-600">CM PERCENT</label><br>
-                <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                type="text" value="'.$UNrow["clUnPercent"].'" placeholder="Year" readonly>';
+                echo'<label for="" class="ml-4 text-gray-600">Child Malnutrition Percentage</label><br>
+                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                            type="text" value="'.$CMrow["clAVGPercent"].'" placeholder="Year" readonly><br>
+                    
+                    <label for="" class="ml-4 text-gray-600">Food Threshold Percentage</label><br>
+                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    type="text" value="'.$FTrow["clFtPercent"].'" placeholder="Year" readonly><br>
+                    
+                    <label for="" class="ml-4 text-gray-600">Income Threshold Percentage</label><br>
+                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    type="text" value="'.$ITrow["tbItPercent"].'" placeholder="Year" readonly><br>
+                    
+                    <label for="" class="ml-4 text-gray-600">Unemployment Percentage</label><br>
+                    <input class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
+                    type="text" value="'.$UNrow["clUnPercent"].'" placeholder="Year" readonly>';
                 ?>
 
                 <br>
@@ -115,7 +115,7 @@ if(!isset($_SESSION["bc_sid"]) && !isset($_SESSION["bc_sid"])){
             <!--
                 <p>Already have an account?</p>
             -->
-                <a href="cityBarangays.php">
+                <a href="barangayRecords.php">
                 <p>Cancel</p>
 
             </a>

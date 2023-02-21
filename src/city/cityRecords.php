@@ -32,13 +32,13 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
             <!--content/right side div-->
             <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200">Poverty and Malnutrition Records</h1>
             
-            <form action="" method="GET" id="search-bar" class="w-full flex justify-end">
-                <input type="text" name="query" placeholder="Search Record" value="" class="text-sm focus:outline-none focus:ring-1 focus:ring-orange-300 px-2" required>
-                <button class="flex items-center gap-2 bg-orange-300 py-[5px] px-4 text-white"> 
-                    <span class="iconify" data-icon="akar-icons:search" data-width="20"></span>
-                    Search
-                </button>
-            </form>            
+            <?php include '../includes/searchbar.php' ?>        
+                
+                <div class="w-full flex justify-end text-sm mt-4">
+                    <a href="cityRecords.php">
+                        Clear Search
+                    </a>
+                </div>  
             
             <div class="w-full mt-4">
                 <!--table for users-->
@@ -54,15 +54,19 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     </thead>
                     <tbody>
                          <?php 
-                        $totalDepListData = "SELECT td.clTdID, td.clTdPercent, td.clTdYear, td.clBrID, br.clBrID, br.clBrName
+                        $totalDepListData = mysqli_query($connectdb,"SELECT td.clTdID, td.clTdPercent, td.clTdYear, td.clBrID, br.clBrID, br.clBrName
                                             FROM pmms.tbtotaldeprivation AS td LEFT JOIN pmms.tbbarangay AS br
-                                            ON td.clBrID = br.clBrID";
-                        if(!$connectdb -> query($totalDepListData)){
-                            array_push($errors, "Errorcode:". $connectdb->errno);    
-                        }
-                        $result = $connectdb -> query($totalDepListData);
-                        if($result->num_rows > 0){
-                            while($row = $result->fetch_assoc()) {
+                                            ON td.clBrID = br.clBrID");
+                        
+                        if(isset($_GET['search'])){ //checks if the input text is not null
+                                $filtervalues = $_GET['search'];
+                                $totalDepListData = mysqli_query($connectdb,"SELECT td.clTdID, td.clTdPercent, td.clTdYear, td.clBrID, br.clBrID, br.clBrName
+                                FROM pmms.tbtotaldeprivation AS td LEFT JOIN pmms.tbbarangay AS br
+                                ON td.clBrID = br.clBrID WHERE br.clBrName LIKE '%$filtervalues%' OR (td.clTdYear = '$filtervalues')");
+                              }
+                        // $result = $connectdb -> query($totalDepListData);
+                        if($totalDepListData->num_rows > 0){
+                            while($row = $totalDepListData->fetch_assoc()) {
                                 echo' <tr class="border-b-2 border-orange-300">';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdID"].'</td>';
                                 echo'      <td class="text-center py-5 px-5">'.$row["clTdYear"].'</td>';
@@ -81,7 +85,7 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                             echo'      <td colspan="5" class="text-center py-5 px-5">No Record Found.</td>';
                             echo '</tr>';
                         }
-                            $result->free_result();
+                            $totalDepListData->free_result();
                         ?>       
                     </tbody>
                 </table>

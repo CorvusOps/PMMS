@@ -43,7 +43,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                     <thead>
                         <!--for the sake of showing, this is a temporary format-->
                         <!--the padding should be adjusted in actual code-->
-                        <tr class="shadow-sm shadow-gray-500">
+                        <tr class="border-b-2 border-gray-400">
                             <th class="py-2 pl-20 pr-5 text-left font-extralight">id</th>
                             <th class="py-2 pl-16 pr-5 text-left font-extralight">Barangay Name</th>
                             <th class="py-2 px-5 text-left font-extralight">Barangay Captain</th>
