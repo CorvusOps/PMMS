@@ -24,34 +24,34 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
     <div class="flex">
         <?php include '../includes/adminSidebar.php'; ?>
         
-        <div class="h-full ml-72 px-12 py-6 w-full grid justify-center">
+        <div class="h-full ml-72 px-12 py-2 w-full grid justify-center">
         <h1 class="mt-4 text-2xl font-semibold tracking-wider text-orange-200 text-center">Add Account</h1>
 
         <form method="post">
             <br>
             <label for="clUrUsername">Username </label> <br>
             <input type="text" name="clUrUsername" placeholder="Username " 
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
             
             <br>
             <label for="clUrPassword">Password </label> <br>
             <input type="password" name="clUrPassword" placeholder="Password "
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
             
             <br>
             <label for="clUrName">Name </label> <br>
             <input type="text" name="clUrName" placeholder="Name "
-                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+                class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
             
             <br>
             <label for="clUrContactNum">Contact Number </label> <br>
             <input type="text" name="clUrContactNum" placeholder="Contact Number "
-            class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+            class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
             
             <br>
             <label for="clUremail">Email </label> <br>
             <input type="text" name="clUremail" placeholder="Email "
-            class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+            class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
             
             <!-- WHY I DIDNT START AT 0
                - 1. ENUM in mysql starts at 1, so when indexing in enum
@@ -59,7 +59,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
             --->
             <br>
             <label for="clUrLevel">User Level </label> <br>
-            <select value="" name="clUrLevel" class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
+            <select value="" name="clUrLevel" class="rounded-md p-1 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
                 <option value="1" selected>CM - City Mayor</option>
                 <option value="2">MS - Municipal Staff</option>
                 <option value="3">BC - Barangay Captain</option>
@@ -67,7 +67,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
 
             <br>
             <button type="submit" name="addUserBtn" formaction="../crud/tbusersAddAccount.php"
-                    class="mt-4 uppercase border-gray-600 px-6 py-2 p-1 w-48 rounded-xl bg-white text-gray-800 hover:text-white shadow-sm hover:bg-slate-700 hover:shadow-lg mb-5 cursor-pointer"> 
+                    class="mt-2 uppercase border-gray-600 px-6 py-2 p-1 w-48 rounded-xl bg-white text-gray-800 hover:text-white shadow-sm hover:bg-slate-700 hover:shadow-lg mb-5 cursor-pointer"> 
                 Add Account 
             </button>
             <button type="reset" class="uppercase border-gray-600 px-6 py-2 p-1 w-48 rounded-xl bg-red-500 text-white shadow-sm hover:bg-red-900 hover:shadow-lg mb-5 cursor-pointer"> 

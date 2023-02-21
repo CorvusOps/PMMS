@@ -50,8 +50,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                             <th class="py-2 px-5 text-left font-extralight">Name</th>
                             <th class="py-2 px-5 text-left font-extralight">Contact Number</th>
                             <th class="py-2 px-5 text-left font-extralight">Email Address</th>
-                            <th class="py-2 px-5 text-left font-extralight">Role</th>
-                            <th class="py-2 px-5 text-left font-extralight">Status</th>                          
+                            <th class="py-2 px-5 text-left font-extralight">Role</th>                       
                             <th class="py-2 px-5 text-center font-extralight">Actions</th>
                         </tr>
                     </thead>
@@ -72,8 +71,7 @@ if(!isset($_SESSION["admin_sid"]) || $_SESSION["admin_sid"] !== session_id()){
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrContactNum"].'</td>';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrEmail"].'</td>';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrRole"].'</td>';
-                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clUrStatus"].'</td>';
-                                    echo'<td class="bg-white text-center top-0 p-2">';
+                                    echo'<td class="bg-white grid justify-center top-0 p-2">';
                                     // Change location into the update page
                                     
                                         echo '  <div class="flex"> <a href="updateAccountPanelTemplate.php?clUrID='.$row["clUrID"].'">

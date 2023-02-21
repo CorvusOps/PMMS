@@ -79,7 +79,12 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                                                 </div>';
                                     echo'</td>';
                             }
-                        }   
+                        }  else {
+                            //If no matching data found, return message that there's no record
+                            echo' <tr class="border-b-2 border-orange-300 ">';
+                            echo'      <td colspan="5" class="text-center py-5 px-5">No Record Found.</td>';
+                            echo '</tr>';
+                        }  
                     ?>
                          
                     </tbody>
