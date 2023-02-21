@@ -72,7 +72,7 @@ if(isset($_SESSION['admin_sid']) || isset($_SESSION['cm_sid']) ||
             <div class="md:ml-32 mx-5">
                 <!--login form-->
                 <form action="index.php" method="post"
-                class="bg-white h-full w-96 p-8 font-Poppins rounded-lg shadow-md shadow-gray-600">
+                class="bg-white w-96 px-8 py-6 font-Poppins rounded-lg shadow-md shadow-gray-600">
 
                     <?php include('src/includes/errors.php'); ?>
 
