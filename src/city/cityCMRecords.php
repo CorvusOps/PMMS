@@ -55,12 +55,16 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                     </thead>
                     <tbody>
                     <?php 
-                          $FTdata = mysqli_query($connectdb,"SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, cm.clCmYear, cm.clBrID, br.clBrID, br.clBrName 
-                                                            FROM tbchildmalnutrition as cm LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID");
+                          $FTdata = mysqli_query($connectdb,"SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, tr.clRID, tr.clRYear, cm.clBrID, br.clBrID, br.clBrName 
+                                                            FROM tbchildmalnutrition as cm 
+                                                            LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID
+                                                            LEFT JOIN tbrecord as tr ON cm.clRID = tr.clRID");
                             if(isset($_GET['search'])){ //checks if the input text is not null
                                 $filtervalues = $_GET['search'];
-                                $FTdata = mysqli_query($connectdb,"SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, cm.clCmYear, cm.clBrID, br.clBrID, br.clBrName 
-                                FROM tbchildmalnutrition as cm LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID WHERE br.clBrName LIKE '%$filtervalues%' OR (cm.clCmYear = '$filtervalues')");
+                                $FTdata = mysqli_query($connectdb,"SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, tr.clRID, tr.clRYear, cm.clBrID, br.clBrID, br.clBrName 
+                                FROM tbchildmalnutrition as cm LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID 
+                                LEFT JOIN tbrecord as tr ON cm.clRID = tr.clRID
+                                WHERE br.clBrName LIKE '%$filtervalues%' OR (tr.clRYear = '$filtervalues')");
                               }
 
                             if($FTdata->num_rows > 0){
@@ -68,9 +72,9 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
                                     echo' <tr class="border-b-2 border-orange-300 ">';
                                     echo'      <td class="text-center py-5 px-5">'.$row["clCmID"].'</td>';
                                     echo'      <td class="text-center py-5 px-5">'.$row["clBrName"].'</td>';
-                                    echo'      <td class="text-center py-5 px-5">'.$row["clCmYear"].'</td>';
+                                    echo'      <td class="text-center py-5 px-5">'.$row["clRYear"].'</td>';
                                     echo'      <td class="text-center py-5 px-5">'.$row["clCmMalType"].'</td>';
-                                    echo'      <td class="text-center py-5 px-5">'.$row["clCmPercent"].'</td>';
+                                    echo'      <td class="text-center py-5 px-5">'.$row["clCmPercent"].'%</td>';
                                     echo '</tr>';
                                     }
                             } else {

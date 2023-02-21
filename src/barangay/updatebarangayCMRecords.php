@@ -11,9 +11,12 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
 if(isset($_GET["clCmID"]) && !empty($_GET["clCmID"])){
     $clCmID = $_GET['clCmID'];
 
-    $query = "SELECT clCmID, clCmMalType, clCmPercent, clCmYear FROM tbchildmalnutrition WHERE clCmID ='$clCmID';";
+    $query = "SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, tr.clRID, tr.clRYear, cm.clBrID, br.clBrID, br.clBrName 
+                FROM tbchildmalnutrition as cm 
+                LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID
+                LEFT JOIN tbrecord as tr ON cm.clRID = tr.clRID WHERE clCmID ='$clCmID';";
     $data = mysqli_query($connectdb,$query);
-    $row = $data->fetch_assoc();
+    $row = $data->fetch_assoc();    
 }
 
 ?>
@@ -57,12 +60,19 @@ if(isset($_GET["clCmID"]) && !empty($_GET["clCmID"])){
                 echo'<input type="text" name="clCmPercent" 
                         class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
                         value="'.$row['clCmPercent'].'">';
-                
-                echo' <br>';
-                echo'<label for="clCmYear">Year</label> <br>';
-                echo'<input type="text" name="clCmYear" 
-                        class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800"
-                        value="'.$row['clCmYear'].'">';
+
+                echo'<br>';
+                echo'<label for="clRID">YEAR</label><br>';
+                echo'<select value="" name="clRID" 
+                class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">';
+                            // optional but we can put if the barangay captians account is still active or resigned alredy
+                            $YearQuery = "SELECT clRID, clRYear FROM tbrecord";
+                            $result = mysqli_query($connectdb, $YearQuery);
+                        
+                            while($row = $result->fetch_assoc()){
+                                echo "<option value=$row[clRID]>$row[clRYear]</option>";
+                            }
+                echo'</select>';
 
                 echo'<br>
                     <button type="submit" name="AddRecord" 

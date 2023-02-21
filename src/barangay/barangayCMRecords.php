@@ -53,8 +53,11 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                     <?php 
                         $brgyID = $_SESSION['BarangayID'];
 
-                        $childMalListData = "SELECT clCmID, clCmMalType, clCmPercent, clCmYear, clBrID
-                        FROM tbchildmalnutrition WHERE clBrID = '$brgyID'";
+                        $childMalListData = "SELECT cm.clCmID, cm.clCmMalType, cm.clCmPercent, tr.clRID, tr.clRYear, cm.clBrID, br.clBrID, br.clBrName 
+                        FROM tbchildmalnutrition as cm 
+                        LEFT JOIN tbrecord as tr ON cm.clRID = tr.clRID
+                        LEFT JOIN tbbarangay as br ON cm.clBrID = br.clBrID
+                        WHERE cm.clBrID = '$brgyID'";  
 
                         if(!$connectdb -> query($childMalListData)){
                             array_push($errors, "Errorcode:". $connectdb->errno);    
@@ -64,7 +67,7 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                             while($row = $result->fetch_assoc()) {
                                 echo'<tr class="border-b-2 border-orange-300">';
                                     echo'<td class="bg-white text-center top-0 p-1">'.$row["clCmID"].'</td>';
-                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clCmYear"].'</td>';
+                                    echo'<td class="bg-white text-center top-0 p-1">'.$row["clRYear"].'</td>';
                                     echo'<td class="bg-white pl-12 text-center top-0 p-1">'.$row["clCmMalType"].'</td>';
                                     echo'<td class="bg-white pl-12 text-center top-0 p-1">'.$row["clCmPercent"].'</td>';
                                     echo'<td class="bg-white top-0 pl-4 py-5 grid justify-center">';
