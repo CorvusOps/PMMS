@@ -53,14 +53,24 @@ if(!isset($_SESSION["cm_sid"]) && !isset($_SESSION["ms_sid"])){
 
                     <div class="flex justify-end items-center w-1/2">
                         <?php 
-                            $YearQuery = "SELECT clRID, clRYear FROM tbtotaldeprivation;";
+                            $YearNow = date("Y");
+                            $TBQuery = "SELECT AVG(td.clTdPercent) AS clAVGPercent FROM tbtotaldeprivation AS td 
+                                        INNER JOIN tbbarangay AS br ON td.clBrID = br.clBrID
+                                        WHERE td.clTdYear = $YearNow;";
+                            $result = $connectdb -> query($TBQuery);
                         ?>
                         <span class="text-4xl font-bold text-black">
                             <span id="cityTotalDep">
-                                <!--must change depending on the totalDep of City-->
-                                22.56
+                                <?php 
+                                if($result->num_rows>0){
+                                    while($row = $result->fetch_assoc()){
+                                        echo $row['clAVGPercent'];
+                                    }
+                                }else{
+                                    echo 'No Record Found in this Year';
+                                }
+                                ?>
                             </span>
-                             %
                         </span>
                     </div>
                 </div>

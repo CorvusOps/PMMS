@@ -40,10 +40,10 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                 <br>
                 <select value="" name="clCmMalType" 
                 class="rounded-md p-2 pl-6 mb-3 border border-solid border-gray-300 w-96 focus:outline-none text-gray-500 focus:border-blue-600 focus:text-gray-800">
-                    <option value="0" selected>Stunted</option>
-                    <option value="1">Wasted</option>
-                    <option value="2">Underweight</option>
-                    <option value="3">Micronutrient</option>
+                    <option value="1" selected>Stunted</option>
+                    <option value="2">Wasted</option>
+                    <option value="3">Underweight</option>
+                    <option value="4">Micronutrient</option>
                 </select>
 
                 <br>

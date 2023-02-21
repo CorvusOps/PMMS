@@ -50,13 +50,24 @@ if(!isset($_SESSION["bc_sid"]) || $_SESSION["bc_sid"] != session_id()){
                     </div>
 
                     <div class="flex justify-end items-center w-1/2">
+                    <?php 
+                            $YearNow = date("2004");
+                            $TBQuery = "SELECT td.clTdID, td.clTdPercent FROM tbtotaldeprivation AS td 
+                                            INNER JOIN tbbarangay AS br ON td.clBrID = br.clBrID
+                                            WHERE td.clTdYear = $YearNow AND td.clBrID = $_SESSION[BarangayID];";
+                            $result = $connectdb -> query($TBQuery);
+                        ?>
                         <span class="text-4xl font-bold text-black">
-                            <span id="barangayTotalDep">
-                                <!--must change depending on the totalDep of City-->
-                                22.56
-                            </span>
-                             %
-                        </span>
+                            <span id="cityTotalDep">
+                                <?php 
+                                if($result->num_rows>0){
+                                    while($row = $result->fetch_assoc()){
+                                        echo $row['clTdPercent'];
+                                    }
+                                }else{
+                                    echo 'No Record Found in this Year';
+                                }
+                                ?>
                     </div>
                 </div>
                 <!--end of information container-->
